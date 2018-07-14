@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Бродский",
+    "folderName": "brodskiy",
+    "verses": [
+      {
+        "title": "Август",
+        "text": "./verses/brodskiy/avgust.txt"
+      },
+      {
+        "title": "Первое сентября",
+        "text": "./verses/brodskiy/pervoe_sentyabrya.txt"
+      },
+      {
+        "title": "Вполголоса - конечно, не во весь",
+        "text": "./verses/brodskiy/vpolgolosa.txt"
+      }
+    ]
+  }
+]

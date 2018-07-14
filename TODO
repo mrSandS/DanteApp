@@ -1,0 +1,13 @@
+/**
+ * Created by Sergun on 04.07.2018.
+ */
+
+---------------------------------------------------05.07.18-------------------------------------------------------------
+
+- Set error handling with not registering the same user twice (beforeEach testing function works before each
+"it" function).
+
+---------------------------------------------------04.07.18-------------------------------------------------------------
+
+- Continue setting testing functions: Register without password should have error property verification and other...
+as Register without email has.
