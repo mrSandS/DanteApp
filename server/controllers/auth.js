@@ -2,10 +2,10 @@
  * Created by Sergun on 13.05.2018.
  */
 var jwt = require('jsonwebtoken');
-var bcrypt = require('bcrypt');
 var _ = require('lodash');
 var config = include('config');
 var validation = require("../validation").auth;
+var bcrypt = require('bcrypt');
 
 exports.list = function (req, res) {
   req.models.User.find({}, null, {}, function(error, users) {
@@ -15,8 +15,17 @@ exports.list = function (req, res) {
 };
 
 exports.register = function(req, res) {
-  validation.register(req.body)
+  validation.userRegisterData(req.body)
+    .then(function(){
+      return req.models.User.findOne({
+        email: req.body.email
+      })
+    })
+    .then(function(user) {
+      return validation.isRegisterUserInDb(user);
+    })
     .then(function() {
+
       req.body.password = bcrypt.hashSync(req.body.password.trim(), 12);
       return req.models.User.create(req.body);
     })
@@ -31,35 +40,34 @@ exports.register = function(req, res) {
     })
     .catch(function(err) {
       res.send(err);
-      // console.log('Register process failed: ', err);
+      console.log('Register process failed: ', err);
     })
 };
 
 exports.login = function(req, res, next) {
-  // console.log('LOGIN');
-  // if (!req.body.email || !req.body.password) {
-  //   console.log('You must send the username and the password.');
-  //   return
-  // }
-  req.models.User.findOne({
-    email: req.body.email
-  })
+  validation.userLoginData(req.body)
+    .then(function(){
+      return req.models.User.findOne({
+        email: req.body.email
+      })
+    })
     .then(function(user) {
-      // if (user.length == 0) {
-      //   return Promise.reject(res, 'The email has not been found.');
-      // }
-      return comparePasswords(req.body.password, user);
+      return validation.isLoginUserInDb(user);
+    })
+    .then(function(user) {
+      return validation.comparePasswords(req.body.password, user);
     })
     .then(function (user) {
       return createToken(user);
     })
     .then(function(user) {
-      res.status(201).send({
+      res.send({
         success: true,
         data: user
       });
     })
     .catch(function(err) {
+
       res.send(err);
       console.log('Login process failed: ', err);
     })
@@ -80,21 +88,6 @@ exports.sendProfile = function(req, res, next) {
         data: updatedUser
       });
     });
-};
-// req.body.password, user.password
-var comparePasswords = function(reqPass, dbUser) {
-  return new Promise(function(res, rej) {
-    bcrypt.compare(reqPass, dbUser.password, function(err, success) {
-      if (err) {
-        rej('An error occurred while the password checking: ', err);
-      }
-      if (!success) {
-        rej('Your password is incorrect: ', err);
-      } else {
-        res(dbUser);
-      }
-    });
-  });
 };
 var createToken = function(user) {
   return new Promise(function(res, rej) {

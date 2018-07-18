@@ -15,7 +15,7 @@ chai.use(chaiHttp);
 
 const testUser = {
   email: 'testemail@mail.com',
-  password: 'testpassword'
+  password: 'qweqweqwe0'
 };
 
 //Our parent block
@@ -39,7 +39,7 @@ describe('Users', function () {
   });
 
   describe('POST auth/register', function() {
-    it('it should not register a new user without email', function(done) {
+    it('it should not validate register process if email field is empty', function(done) {
       chai.request(server)
         .post('/api/auth/register')
         .send({password: testUser.password})
@@ -47,13 +47,29 @@ describe('Users', function () {
           res.should.have.status(200);
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
-          res.body.errors.should.have.property('email');
-          res.body.errors.email.should.have.property('kind').eql('required');
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
           done();
         });
     });
 
-    it('it should not register a new user without password', function(done) {
+    it('it should not validate register process if email is not validated', function(done) {
+      chai.request(server)
+        .post('/api/auth/register')
+        .send({email: "testemail.com", password: testUser.password})
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("errors");
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
+          done();
+        });
+    });
+
+    it('it should not validate register process if password field is empty', function(done) {
       chai.request(server)
         .post('/api/auth/register')
         .send({email:testUser.email})
@@ -61,8 +77,39 @@ describe('Users', function () {
           res.should.have.status(200);
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
-          res.body.errors.should.have.property('password');
-          res.body.errors.password.should.have.property('kind').eql('required');
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
+          done();
+        });
+    });
+
+    it('it should not validate register process if there are no digits in password', function(done) {
+      chai.request(server)
+        .post('/api/auth/register')
+        .send({email: testUser.email, password: "qweqweqwe"})
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("errors");
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
+          done();
+        });
+    });
+
+    it('it should not validate register process with less than 8 symbols in password', function(done) {
+      chai.request(server)
+        .post('/api/auth/register')
+        .send({email: testUser.email, password: "qweqweqwe"})
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("errors");
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
           done();
         });
     });
@@ -83,20 +130,103 @@ describe('Users', function () {
         });
     });
 
-    it('it should not register the same user twice', function(done) {
+    it('it should not validate register process if a user with same email already exists in db', function(done) {
         chai.request(server)
           .post('/api/auth/register')
           .send(testUser)
           .end(function(err, res) {
-            res.should.not.have.status(201);
+            res.should.have.status(200);
             res.body.should.be.a("object");
-            res.body.should.have.property("code").eql(11000);
-            res.body.should.have.property("errmsg");
-            console.log('STAUTS: ', res.status);
-            console.log("Not registering twice: ", res.body);
-            console.log("Not registering twice error: ", err);
+            res.body.should.have.property("errors");
+            res.body.should.have.property("messages");
+            res.body.messages.should.be.an.instanceof(Array);
+            res.body.messages.should.have.lengthOf.at.least(1);
             done();
           });
     });
   });
+
+  describe('POST auth/login', function() {
+    this.timeout(10000);
+    before(function(done) {
+      User.create(testUser, function(err) {
+        done();
+      });
+    });
+    after(function(done) {
+      User.remove({email: testUser.email}, function(err) {
+        done();
+      });
+    });
+    it('it should not validate login process if a user left email field empty', function(done) {
+      chai.request(server)
+        .post('/api/auth/login')
+        .send({password: testUser.password})
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("errors");
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
+          done();
+        });
+    });
+    it('it should not validate login process if a user left password field empty', function(done) {
+      chai.request(server)
+        .post('/api/auth/login')
+        .send({email: testUser.email})
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("errors");
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
+          done();
+        });
+    });
+    it('it should not validate login process if there is no such email in db', function(done) {
+      chai.request(server)
+        .post('/api/auth/login')
+        .send({email: "notexistedtestuser@mail.com", password: testUser.password})
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("errors");
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
+          done();
+        });
+    });
+    it('it should not validate login process if password is incorrect', function(done) {
+      chai.request(server)
+        .post('/api/auth/login')
+        .send({email: testUser.email, password: "kje2309jdsdu230"})
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("errors");
+          res.body.should.have.property("messages");
+          res.body.messages.should.be.an.instanceof(Array);
+          res.body.messages.should.have.lengthOf.at.least(1);
+          done();
+        });
+    });
+    it('it should log in a user', function(done) {
+      chai.request(server)
+        .post('/api/auth/login')
+        .send(testUser)
+        .end(function(err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a("object");
+          res.body.should.have.property("success").eql(true);
+          res.body.data.should.have.property("_id");
+          res.body.data.should.have.property("email");
+          res.body.data.should.have.property("token");
+          done();
+        });
+    });
+  })
 });
