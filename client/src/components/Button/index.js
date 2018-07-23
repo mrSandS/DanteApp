@@ -29,11 +29,15 @@ export default class Button extends React.Component {
         onPress={onPress}
         style={[AppStyles.rowCenter, containerStyle]}
       >
-        <Icon
-          name={iconName}
-          color={iconColor}
-          size={iconSize}
-        />
+        {
+          iconName
+            ? <Icon
+                name={iconName}
+                color={iconColor}
+                size={iconSize}
+              />
+            : null
+        }
         {
           title
             ? <Text style={textStyle}>{title}</Text>

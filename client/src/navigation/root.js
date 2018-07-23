@@ -9,6 +9,7 @@ import {
   HomeScreen,
   MainTabNav,
   RegisterScreen,
+  LoginScreen,
   SplashScreen,
   SettingsScreen
 } from '@consts/navigation';
@@ -21,6 +22,7 @@ import {
 import TabNav from './TabNavigator';
 import Home from '@screens/Home';
 import Register from '@screens/Auth/Register';
+import Login from '@screens/Auth/Login';
 import Splash from '@screens/Splash';
 import Settings from '@screens/Settings';
 
@@ -30,6 +32,9 @@ const RouteConfigs = {
   },
   [RegisterScreen]: {
     screen: Register
+  },
+  [LoginScreen]: {
+    screen: Login
   },
   [HomeScreen]: {
     screen: Home

@@ -48,8 +48,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -63,8 +66,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -78,8 +84,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -93,8 +102,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -108,8 +120,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -139,8 +154,11 @@ describe('Users', function () {
             res.body.should.be.a("object");
             res.body.should.have.property("errors");
             res.body.should.have.property("messages");
-            res.body.messages.should.be.an.instanceof(Array);
-            res.body.messages.should.have.lengthOf.at.least(1);
+            res.body.messages.should.be.a("array");
+            res.body.messages.forEach(function(el){
+              el.should.have.property("source");
+              el.should.have.property("body");
+            });
             done();
           });
     });
@@ -167,8 +185,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -181,8 +202,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -195,8 +219,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });
@@ -209,8 +236,11 @@ describe('Users', function () {
           res.body.should.be.a("object");
           res.body.should.have.property("errors");
           res.body.should.have.property("messages");
-          res.body.messages.should.be.an.instanceof(Array);
-          res.body.messages.should.have.lengthOf.at.least(1);
+          res.body.messages.should.be.a("array");
+          res.body.messages.forEach(function(el){
+            el.should.have.property("source");
+            el.should.have.property("body");
+          });
           done();
         });
     });

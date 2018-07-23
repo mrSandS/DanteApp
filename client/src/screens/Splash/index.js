@@ -10,7 +10,8 @@ import {
 import {
   HomeScreen,
   MainTabNav,
-  RegisterScreen
+  RegisterScreen,
+  LoginScreen
 } from '@consts/navigation';
 import {
   AppStyles,
@@ -28,7 +29,7 @@ class Splash extends React.Component {
         if (res && res._id) {
           this.props.navigation.navigate(HomeScreen);
         } else {
-          this.props.navigation.navigate(RegisterScreen);
+          this.props.navigation.navigate(LoginScreen);
         }
       })
       .catch(err => {

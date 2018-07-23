@@ -35,7 +35,7 @@ class HttpService {
       .then(response => {
         console.log('HttpService Fetching Response: ', response);
         if (response.errors) {
-          return Propmise.reject(response);
+          return Promise.reject(response);
         }
         return Promise.resolve(response);
       })

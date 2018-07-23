@@ -136,7 +136,7 @@ export const authorize = ({profileData, actionName}) => {
         HttpService.setSessionToken(res.data.token);
         StorageService.setSessionToken(res.data.token);
         return res.data
-      })
+      });
   };
 };
 
