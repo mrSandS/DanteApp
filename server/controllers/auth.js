@@ -15,6 +15,7 @@ exports.list = function (req, res) {
 };
 
 exports.register = function(req, res) {
+  req.body.email = req.body.email.trim();
   validation.userRegisterData(req.body)
     .then(function(){
       return req.models.User.findOne({
@@ -45,6 +46,7 @@ exports.register = function(req, res) {
 };
 
 exports.login = function(req, res, next) {
+  req.body.email = req.body.email.trim();
   validation.userLoginData(req.body)
     .then(function(){
       return req.models.User.findOne({

@@ -16,8 +16,10 @@ exports.sendAvatar = function(req, res, next) {
 
 		console.log(author.folderName);
 		var relativePath = '../db/images/' + author.folderName + '/avatar.jpg';
-		var avatar = fs.readFileSync(path.resolve(__dirname, relativePath));
-		res.writeHead(200, {"Content-Type": "image/jpg"});
-		res.end(avatar, "binary");
+    if(path.resolve(__dirname, relativePath)) {
+      var avatar = fs.readFileSync(path.resolve(__dirname, relativePath));
+      res.writeHead(200, {"Content-Type": "image/jpg"});
+      res.end(avatar, "binary");
+		}
 	})
 };

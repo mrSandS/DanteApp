@@ -3,6 +3,7 @@ import {
   Text,
   View,
   FlatList,
+  ScrollView,
   Image,
   TouchableOpacity,
   TouchableHighlight
@@ -11,10 +12,9 @@ import {
   Button
 } from '@components';
 import {
-  SettingsScreen
+  SettingsScreen,
+  AuthorScreen
 } from '@consts/navigation';
-import Icon from 'react-native-ionicons';
-import ApiService from '@services/api';
 import Utils from '@services/utils';
 import { connect } from 'react-redux';
 import {
@@ -33,7 +33,7 @@ class Home extends React.Component {
       headerRight: <Button
         onPress={()=>navigation.navigate(SettingsScreen)}
         iconName='ios-settings-outline'
-        iconColor='white'
+        iconColor='#adadad'
         iconSize={40}
       />,
       headerLeft: null
@@ -42,17 +42,38 @@ class Home extends React.Component {
   componentWillMount () {
     this.props.setAuthors();
   }
-  render() {
-    return <View>
+  onListItemPress = id => {
+    this.props.navigation.navigate(AuthorScreen, {id});
+  };
+  renderItem = ({item}) => {
+    return <TouchableOpacity
+      style={styles.listItem}
+      onPress={() => this.onListItemPress(item._id)}
+    >
       <Image
-        disableCache={true}
-        style={{width: 100, height: 100}}
+
+        style={styles.image}
         source={{
-          uri: Utils.getAvatar('5aef5fa22aa29f16b4ca1cb0'),
+          uri: Utils.getAvatar(item._id),
           headers: {'Cache-Control': 'no-cache'}
         }}
       />
-    </View>
+      <Text style={styles.name}>{item.name}</Text>
+    </TouchableOpacity>
+  };
+  render() {
+    const {
+      authors
+    } = this.props;
+    return <FlatList
+      style={styles.container}
+      data={authors.data}
+      renderItem={this.renderItem}
+      keyExtractor={item => item._id}
+      numColumns={2}
+      contentContainerStyle={styles.contentContainer}
+      columnWrapperStyle={styles.columnWrapperStyle}
+    />
   }
 }
 

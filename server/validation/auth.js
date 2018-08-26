@@ -25,7 +25,6 @@ var errorHandlerWrapper = function(messages, response) {
 
 exports.userRegisterData = function(body) {
 
-    var sources = [];
     var messages = [];
     if (!body.email) {
       messages.push({source: "email", body: "It seems that email field is empty"});

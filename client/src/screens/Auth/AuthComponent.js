@@ -50,11 +50,13 @@ class AuthComponent extends React.Component {
       passwordValue: value
     })
   };
-  clearErrorsMessages = () => {
+  clearState = () => {
     this.setState({
       errorsMessages: [],
       hasEmailFieldError: false,
-      hasPasswordFieldError: false
+      hasPasswordFieldError: false,
+      passwordValue: '',
+      emailValue: '',
     });
   };
   authActionButtonPress = actionName => {
@@ -68,13 +70,17 @@ class AuthComponent extends React.Component {
     };
     this.props.authorize({profileData, actionName})
       .then(res => {
-        this.clearErrorsMessages();
+        this.clearState();
         if (res && res._id) {
           this.props.navigation.navigate(HomeScreen);
         }
       })
       .catch(err => {
-        this.clearErrorsMessages();
+        this.setState({
+          errorsMessages: [],
+          hasEmailFieldError: false,
+          hasPasswordFieldError: false,
+        });
         if (err.messages && err.messages.length) {
           const state = {};
           state.errorsMessages = err.messages;
@@ -90,6 +96,7 @@ class AuthComponent extends React.Component {
       });
   };
   changeAuthMethodButtonPress = screen => {
+    this.clearState();
     this.props.navigation.navigate(screen);
   };
   renderErrors = () => {
@@ -112,7 +119,7 @@ class AuthComponent extends React.Component {
   };
 
   render() {
-    console.log("Errors: ", this.state.errors);
+    console.log("Errors: ", this.state.errorsMessages);
 
     const {
       hasPasswordFieldError,

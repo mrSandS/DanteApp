@@ -11,7 +11,8 @@ import {
   RegisterScreen,
   LoginScreen,
   SplashScreen,
-  SettingsScreen
+  SettingsScreen,
+  AuthorScreen
 } from '@consts/navigation';
 import {
   createStackNavigator
@@ -25,6 +26,7 @@ import Register from '@screens/Auth/Register';
 import Login from '@screens/Auth/Login';
 import Splash from '@screens/Splash';
 import Settings from '@screens/Settings';
+import Author from '@screens/Author';
 
 const RouteConfigs = {
   [SplashScreen]: {
@@ -41,6 +43,9 @@ const RouteConfigs = {
   },
   [SettingsScreen]: {
     screen: Settings
+  },
+  [AuthorScreen]: {
+    screen: Author
   }
 	// [MainTabNav]: {
 	// 	screen: TabNav,
@@ -52,10 +57,10 @@ const StackNavigatorConfig = {
 		return {
 		  headerMode: 'none',
       headerStyle: {
-		    backgroundColor: 'black',
+		    backgroundColor: 'white',
         paddingHorizontal: 15
-		  },
-			// header: <NavBar navigation={navigation} />,
+		  }
+      // header: <NavBar navigation={navigation} />,
       // headerRight: <Icon
        //  name='ios-settings-outline'
        //  color='pink'

@@ -1,19 +1,181 @@
 [
   {
     "name": "Бродский",
-    "folderName": "brodskiy",
+    "folderName": "brodsky",
     "verses": [
       {
         "title": "Август",
-        "text": "./verses/brodskiy/avgust.txt"
+        "text": "avgust.txt"
       },
       {
         "title": "Первое сентября",
-        "text": "./verses/brodskiy/pervoe_sentyabrya.txt"
+        "text": "pervoe_sentyabrya.txt"
       },
       {
         "title": "Вполголоса - конечно, не во весь",
-        "text": "./verses/brodskiy/vpolgolosa.txt"
+        "text": "vpolgolosa.txt"
+      }
+    ]
+  },
+  {
+    "name": "Маяковский",
+    "folderName": "mayakovsky",
+    "verses": [
+      {
+        "title": "А все-таки",
+        "text": "a_vse-taki.txt"
+      },
+      {
+        "title": "А вы могли-бы?",
+        "text": "a_vi_mogli-bi.txt"
+      },
+      {
+        "title": "Гимн взятке",
+        "text": "gimn-vzyatke.txt"
+      }
+    ]
+  },
+  {
+    "name": "Пушкин",
+    "folderName": "pushkin",
+    "verses": [
+      {
+        "title": "Весна, весна, пора любви ...",
+        "text": "vesna.txt"
+      },
+      {
+        "title": "Буря",
+        "text": "burya.txt"
+      },
+      {
+        "title": "Во глубине сибирских руд...",
+        "text": "vo_glubine_sibirskih_rud.txt"
+      }
+    ]
+  },
+  {
+    "name": "Высоцкий",
+    "folderName": "visocky",
+    "verses": [
+      {
+        "title": "А люди всё роптали и роптали...",
+        "text": "a_ludi_vse_roptali.txt"
+      },
+      {
+        "title": "Бег иноходца",
+        "text": "beg_inohodca.txt"
+      },
+      {
+        "title": "Нет меня — я покинул Расею...",
+        "text": "net_menya_ya_pokinul_rosseyu.txt"
+      }
+    ]
+  },
+  {
+    "name": "Блок",
+    "folderName": "blok",
+    "verses": [
+      {
+        "title": "Ангел-хранитель",
+        "text": "angel_hranitel.txt"
+      },
+      {
+        "title": "Бушует снежная весна...",
+        "text": "bushuet_snezhnaya_vesna.txt"
+      },
+      {
+        "title": "Была ты всех ярче, верней и прелестней...",
+        "text": "bila_ti_vseh.txt"
+      }
+    ]
+  },
+  {
+    "name": "Пастернак",
+    "folderName": "pasternak",
+    "verses": [
+      {
+        "title": "Август",
+        "text": "avgust.txt"
+      },
+      {
+        "title": "Анне Ахматовой",
+        "text": "anne_ahmatovoy.txt"
+      },
+      {
+        "title": "В больнице",
+        "text": "v_bolnice.txt"
+      }
+    ]
+  },
+  {
+    "name": "Гумилев",
+    "folderName": "gumilyov",
+    "verses": [
+      {
+        "title": "Я больше ее не люблю...",
+        "text": "ya_bolshe_ee_ne_lublu.txt"
+      },
+      {
+        "title": "Никогда не пел и не любил... ",
+        "text": "nikogda_ne_pel.txt"
+      },
+      {
+        "title": "Неизгладимы, нет, в моей судьбе...",
+        "text": "neizgladimi.txt"
+      }
+    ]
+  },
+  {
+    "name": "Мандельштам",
+    "folderName": "mandelshtam",
+    "verses": [
+      {
+        "title": "Бесшумное веретено...",
+        "text": "besshumnoe_vereteno.txt"
+      },
+      {
+        "title": "В морозном воздухе...",
+        "text": "v_moroznom_vozduhe.txt"
+      },
+      {
+        "title": "В огромном омуте...",
+        "text": "v_ogromnom_omute.txt"
+      }
+    ]
+  },
+  {
+    "name": "Тургенев",
+    "folderName": "turgenev",
+    "verses": [
+      {
+        "title": "Брожу над озером",
+        "text": "brozhu_nad_ozerom.txt"
+      },
+      {
+        "title": "Весенний вечер",
+        "text": "vesenniy_vecher.txt"
+      },
+      {
+        "title": "Гроза промчалась",
+        "text": "groza_promchalas.txt"
+      }
+    ]
+  },
+  {
+    "name": "Есенин",
+    "folderName": "esenin",
+    "verses": [
+      {
+        "title": "Алый мрак в небесной черни...",
+        "text": "aliy_mrak.txt"
+      },
+      {
+        "title": "Весна",
+        "text": "vesna.txt"
+      },
+      {
+        "title": "В этом мире я только прохожий...",
+        "text": "v_etom_mire.txt"
       }
     ]
   }

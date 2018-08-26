@@ -12,7 +12,7 @@ import {
   Button
 } from '@components';
 import {
-  RegisterScreen
+  LoginScreen
 } from '@consts/navigation';
 import Icon from 'react-native-ionicons';
 import ApiService from '@services/api';
@@ -42,7 +42,7 @@ class Settings extends React.Component {
     }
   };
   logOutButtonPress = () => {
-    this.props.navigation.navigate(RegisterScreen);
+    this.props.navigation.navigate(LoginScreen);
     this.props.logOut();
   };
   render() {

@@ -17,3 +17,4 @@ export const PlayerScreen = 'PlayerScreen';
 export const SearchScreen = 'SearchScreen';
 export const LikesListScreen = 'LikesListScreen';
 export const UserInfoScreen = 'UserInfoScreen';
+export const AuthorScreen = 'AuthorScreen';
