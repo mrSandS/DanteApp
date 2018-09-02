@@ -2,21 +2,32 @@ import API from '@consts/api';
 import HttpService from './http';
 
 const {
-  authors: authorsApi,
-  auth: authApi
+  authors: {
+    setFavoriteStatus,
+    getData
+  },
+  auth: {
+    register,
+    login,
+    getProfile
+  }
 } = API;
 
 export default {
   getAuthors: () => {
-    return HttpService.fetch(authorsApi)
+    return HttpService.fetch(getData);
+  },
+  setFavoriteStatus: ({id, status}) => {
+    const body = {status};
+    return HttpService.fetch(setFavoriteStatus(id), body);
   },
   register: body => {
-    return HttpService.fetch(authApi.register, body)
+    return HttpService.fetch(register, body);
   },
   login: body => {
-    return HttpService.fetch(authApi.login, body)
+    return HttpService.fetch(login, body);
   },
   getProfile: () => {
-    return HttpService.fetch(authApi.getProfile)
+    return HttpService.fetch(getProfile);
   }
 }

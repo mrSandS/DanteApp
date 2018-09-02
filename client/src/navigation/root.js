@@ -12,7 +12,8 @@ import {
   LoginScreen,
   SplashScreen,
   SettingsScreen,
-  AuthorScreen
+  AuthorScreen,
+  PlayerScreen
 } from '@consts/navigation';
 import {
   createStackNavigator
@@ -27,6 +28,7 @@ import Login from '@screens/Auth/Login';
 import Splash from '@screens/Splash';
 import Settings from '@screens/Settings';
 import Author from '@screens/Author';
+import Player from '@screens/Player';
 
 const RouteConfigs = {
   [SplashScreen]: {
@@ -46,6 +48,9 @@ const RouteConfigs = {
   },
   [AuthorScreen]: {
     screen: Author
+  },
+  [PlayerScreen]: {
+    screen: Player
   }
 	// [MainTabNav]: {
 	// 	screen: TabNav,

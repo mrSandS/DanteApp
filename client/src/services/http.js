@@ -4,6 +4,7 @@ const DEFAULT_HEADERS = {
 };
 
 class HttpService {
+
   authToken = null;
 
   fetch(point, body, options = {}, testingToken) {
@@ -20,6 +21,7 @@ class HttpService {
 
     if (this.authToken) {
       requestOptions.headers.Authorization = this.authToken;
+      console.log("Fetch Auth Token: ", this.authToken)
     }
     if (testingToken) {
       requestOptions.headers.Authorization = testingToken;

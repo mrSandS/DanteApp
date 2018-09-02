@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var verseSchema = new mongoose.Schema({
 	title: String,
-	text: String
+	text: String,
 })
 
 var authorSchema = new mongoose.Schema({
@@ -12,6 +12,15 @@ var authorSchema = new mongoose.Schema({
 	folderName: {
 		type: String
 	},
+  bio: {
+    type: String
+  },
+  lifeDates: {
+    type: String
+  },
+  isFavorite: {
+    type: Boolean
+  },
 	verses: [verseSchema]
 });
 

@@ -23,3 +23,14 @@ exports.sendAvatar = function(req, res, next) {
 		}
 	})
 };
+exports.setFavoriteStatus = function(req, res, next) {
+  var authorId = req.params.id;
+  req.models.Author.updateOne({_id: authorId}, {isFavorite: req.body.status}, null, function(error, response) {
+    if (error) return res.send(error);
+
+    res.send(response);
+    console.log("Updating author: ", response);
+
+  });
+	console.log(req.body);
+};

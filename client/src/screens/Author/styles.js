@@ -15,37 +15,94 @@ export default StyleSheet.create({
     height: "100%"
   },
   photo: {
+	  position: "relative",
     width: "100%",
-    height: 200
-    // flex: 1
+    height: 300,
+    display: "flex",
+    justifyContent: "flex-end"
+  },
+  authorNameContainer: {
+    backgroundColor: "rgba(0,0,0,0.8)"
+  },
+  authorName: {
+    paddingVertical: 8,
+    marginLeft: 6,
+	  textAlign: "center",
+    fontSize: 18,
+    color: "white",
+  },
+  bio: {
+	  padding: 10,
+    paddingTop: 0,
+    fontSize: 12,
+    color: "#fff",
+  },
+  heart: {
+    position: "absolute",
+    top: 10,
+    left: 20,
+  },
+  lifeDates: {
+	  position: "absolute",
+    paddingVertical: 3,
+    paddingHorizontal: 5,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    top: 10,
+    right: 0,
+    fontSize: 24,
+    color: "#ccc"
+  },
+  separatorField: {
+	  marginVertical: 20
+  },
+  content: {
+    padding: 10,
+    paddingTop:0
   },
   contentContainer: {
-    padding: 10,
     display: "flex",
+    alignItems: "center"
+  },
+  headContainer: {
+	  width: "27%"
   },
   name: {
     fontSize: 26
   },
   buttonsContainer: {
-    marginVertical: 12,
+	  width: "57%",
+    justifyContent: "space-between",
+    marginVertical: 24,
   },
   button: {
-	  flex: 1,
+	  width: "45%",
+
     paddingVertical: 5,
     paddingHorizontal: 6,
     borderWidth: 0.5,
-    borderColor: "#adadad"
+    borderColor: "#333333"
   },
   leftButton: {
-    borderBottomLeftRadius: BORDER_RADIUS,
-    borderTopLeftRadius: BORDER_RADIUS
+    borderRadius: BORDER_RADIUS,
+    borderRadius: BORDER_RADIUS
   },
   rightButton: {
-    borderBottomRightRadius: BORDER_RADIUS,
-    borderTopRightRadius: BORDER_RADIUS
+    borderRadius: BORDER_RADIUS,
+    borderRadius: BORDER_RADIUS
   },
   buttonTextStyle: {
-	  color: "white",
-    fontSize: 18
+	  // color: "#333333",
+    fontSize: 16
+  },
+  versesContainer: {
+	  width:"100%"
+  },
+  verseWrapper: {
+    paddingVertical: 10,
+    borderBottomWidth: 0.5,
+    borderBottomColor: "#adadad"
+  },
+  verse: {
+    fontSize: 16,
   }
 })

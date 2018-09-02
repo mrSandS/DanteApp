@@ -6,8 +6,14 @@ const getApiPath = path => {
 
 const API = {
   authors: {
-    path: getApiPath('authors'),
-    method: 'GET'
+    getData: {
+      path: getApiPath('authors'),
+      method: 'GET'
+    },
+    setFavoriteStatus: id => ({
+      path: getApiPath(`authors/${id}`),
+      method: 'PUT'
+    })
   },
   auth: {
     users: {

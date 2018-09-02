@@ -23,6 +23,7 @@ app.set('port', process.env.PORT || 3000);
 
 app.get('/api/authors', controllers.authors.list);
 app.get('/api/authors/:id/avatar', controllers.authors.sendAvatar);
+app.put('/api/authors/:id', controllers.authors.setFavoriteStatus);
 
 app.get('/api/auth/users', controllers.auth.list);
 app.post('/api/auth/register', controllers.auth.register);
