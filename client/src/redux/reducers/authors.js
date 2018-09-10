@@ -4,7 +4,7 @@ import {
 	ADD_TO_FAVORITES,
 	REMOVE_FROM_FAVORITES,
   SET_CURRENT_VALUES,
-  SET_FAVORITE_STATUS
+  SET_AUTHOR_RATING
 } from '@consts/actions';
 
 const initialState = {
@@ -20,14 +20,14 @@ const authorsReducer = (state = initialState, action) => {
   			...state,
         data: action.payload
   		};
-    case SET_FAVORITE_STATUS:
+    case SET_AUTHOR_RATING:
       return {
         ...state,
         data: state.data.map(el => {
           if (el._id === action.payload.id) {
             return {
               ...el,
-              isFavorite: action.payload.status
+              rating: action.payload.rating
             }
           }
           return el
@@ -49,27 +49,6 @@ export const setAuthors = () => {
         return res
       })
   };
-};
-
-export const setFavoriteStatus = payload => {
-  return dispatch => {
-    /*
-    const {
-      id,
-      status
-    } = payload;
-    */
-    ApiService
-      .setFavoriteStatus(payload)
-      .then(res => {
-        if(res.ok) {
-          dispatch({
-            type: SET_FAVORITE_STATUS,
-            payload
-          })
-        }
-      })
-  }
 };
 
 export const setCurrentValues = payload => {

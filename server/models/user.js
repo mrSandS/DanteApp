@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var userSchema = new mongoose.Schema({
 	email: {
@@ -10,7 +11,8 @@ var userSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	favoriteAuthors: [{type: Schema.Types.ObjectId, ref: "Author" }]
 });
 
 module.exports = mongoose.model('User', userSchema);

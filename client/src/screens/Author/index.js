@@ -16,8 +16,8 @@ import {
   PlayerScreen
 } from '@consts/navigation';
 import {
-  setFavoriteStatus
-} from '@redux/reducers/authors';
+  setFavoriteAuthor
+} from '@redux/reducers/auth';
 import Icon from 'react-native-ionicons';
 import Utils from '@services/utils';
 import { connect } from 'react-redux';
@@ -32,6 +32,7 @@ class Author extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isFavorite: false,
       activeContent: "verses",
       isBiographyOpen: false
     };
@@ -57,7 +58,14 @@ class Author extends React.Component {
     });
   };
   onHeartPress = () => {
-    this.props.setFavoriteStatus({id: this.authorId, status: !this.author.isFavorite});
+    this.setState({
+      isFavorite: !this.state.isFavorite
+    }, () => {
+      this.props.setFavoriteAuthor({
+        id: this.authorId,
+        status: this.state.isFavorite
+      });
+    });
   };
   render() {
     const {
@@ -74,8 +82,11 @@ class Author extends React.Component {
       bio,
       _id,
       verses,
-      isFavorite
+      // isFavorite
     } = this.author;
+    const {
+      isFavorite
+    } = this.state;
     const getActiveColor = isActive => isActive ?  "#333333" : "#f2f2f2b3";
     let heartIconName;
     let heartColor;
@@ -98,7 +109,7 @@ class Author extends React.Component {
         }}
         style={styles.photo}
       >
-        <Text style={styles.lifeDates}>{lifeDates}</Text>
+
         <TouchableOpacity
           onPress={this.onHeartPress}
           style={styles.heart}
@@ -158,7 +169,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setFavoriteStatus: payload => dispatch(setFavoriteStatus(payload))
+  setFavoriteAuthor: payload => dispatch(setFavoriteAuthor(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Author);
@@ -186,3 +197,5 @@ export default connect(mapStateToProps, mapDispatchToProps)(Author);
     {/*color="#adadad"*/}
   {/*/>*/}
 {/*</View>*/}
+
+// <Text style={styles.lifeDates}>{lifeDates}</Text>

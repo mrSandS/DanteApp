@@ -3,13 +3,13 @@ import HttpService from './http';
 
 const {
   authors: {
-    setFavoriteStatus,
     getData
   },
   auth: {
     register,
     login,
-    getProfile
+    getProfile,
+    setFavoriteAuthor
   }
 } = API;
 
@@ -17,9 +17,9 @@ export default {
   getAuthors: () => {
     return HttpService.fetch(getData);
   },
-  setFavoriteStatus: ({id, status}) => {
+  setFavoriteAuthor: ({id, status}) => {
     const body = {status};
-    return HttpService.fetch(setFavoriteStatus(id), body);
+    return HttpService.fetch(setFavoriteAuthor(id), body);
   },
   register: body => {
     return HttpService.fetch(register, body);

@@ -18,8 +18,9 @@ var authorSchema = new mongoose.Schema({
   lifeDates: {
     type: String
   },
-  isFavorite: {
-    type: Boolean
+  rating: {
+    type: Number,
+    default: 0
   },
 	verses: [verseSchema]
 });

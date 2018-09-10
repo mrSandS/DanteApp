@@ -9,11 +9,7 @@ const API = {
     getData: {
       path: getApiPath('authors'),
       method: 'GET'
-    },
-    setFavoriteStatus: id => ({
-      path: getApiPath(`authors/${id}`),
-      method: 'PUT'
-    })
+    }
   },
   auth: {
     users: {
@@ -31,7 +27,11 @@ const API = {
     getProfile: {
       path: getApiPath('auth/profile'),
       method: 'GET'
-    }
+    },
+    setFavoriteAuthor: id => ({
+      path: getApiPath(`auth/setFavoriteAuthor/${id}`),
+      method: 'PUT'
+    })
   }
 };
 

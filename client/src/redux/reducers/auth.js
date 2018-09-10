@@ -6,11 +6,13 @@ import StorageService from '@services/storage';
 import HttpService from '@services/http';
 import {
   SET_AUTH_DATA,
-  REMOVE_AUTH_DATA
+  REMOVE_AUTH_DATA,
+  SET_FAVORITE_AUTHORS,
+  SET_AUTHOR_RATING
 } from '@consts/actions';
 
 const initialState = {
-  data: []
+  data: {}
 };
 
 const authReducer = (state = initialState, action) => {
@@ -24,7 +26,15 @@ const authReducer = (state = initialState, action) => {
     case REMOVE_AUTH_DATA:
       return {
         ...state,
-        data: []
+        data: {}
+      };
+    case SET_FAVORITE_AUTHORS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          favoriteAuthors: action.payload
+        }
       };
     default:
       return state
@@ -147,6 +157,36 @@ export const logOut = () => {
     dispatch({
       type: REMOVE_AUTH_DATA
     });
+  }
+};
+
+export const setFavoriteAuthor = payload => {
+  return dispatch => {
+    /*
+     const {
+     id,
+     status
+     } = payload;
+     */
+    ApiService
+      .setFavoriteAuthor(payload)
+      .then(res => {
+        const {
+          user,
+          author
+        } = res.data;
+        dispatch({
+          type: SET_FAVORITE_AUTHORS,
+          payload: user.favoriteAuthors
+        });
+        dispatch({
+          type: SET_AUTHOR_RATING,
+          payload: {
+            id: author._id,
+            rating: author.rating
+          }
+        });
+      })
   }
 };
 

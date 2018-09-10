@@ -91,6 +91,42 @@ exports.sendProfile = function(req, res, next) {
       });
     });
 };
+exports.setFavoriteAuthor = function(req, res, next) {
+  let userUpdateQueryCommand = req.body.status
+    ? "$push"
+    : "$pull";
+  let authorUpdateIncValue = req.body.status
+    ? 1
+    : -1;
+
+  req.models.User.findOneAndUpdate(
+    {_id: req.user._id},
+    {[userUpdateQueryCommand]: {favoriteAuthors: req.params.id}},
+    {new: true},
+    function(error, userRes) {
+      if (error) return res.send(error);
+      req.models.Author.findOneAndUpdate(
+        {_id: req.params.id},
+        {$inc: {rating: authorUpdateIncValue}},
+        {new: true},
+        function(error, authorRes){
+          if (error) return res.send(error);
+          console.log("Find User And Modify: ", {
+            userRes,
+            authorRes
+          });
+          res.send({
+            data: {
+              user: userRes,
+              author: authorRes
+            }
+          });
+        }
+      )
+    }
+  )
+};
+
 var createToken = function(user) {
   return new Promise(function(res, rej) {
     var updatedNewUser = _.omit(user.toObject(), 'password');
