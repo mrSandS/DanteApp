@@ -32,18 +32,26 @@ class Author extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFavorite: false,
       activeContent: "verses",
       isBiographyOpen: false
     };
   }
   componentWillMount() {
-    this.authorId = this.props.navigation.getParam("id");
-    this.author = this.props.authors.data.find(el => el._id === this.authorId);
+    this.setData(this.props);
   }
   componentWillUpdate(nextProps) {
-    this.author = nextProps.authors.data.find(el => el._id === this.authorId);
+    this.setData(nextProps);
   }
+  setData = (props) => {
+    const {
+      data: {
+        favoriteAuthors
+      }
+    } = props.auth;
+    this.authorId = props.navigation.getParam("id");
+    this.author = props.authors.data.find(el => el._id === this.authorId);
+    this.isFavorite = !!favoriteAuthors.find(fav => fav._id === this.authorId);
+  };
   onVersePress = id => {
     this.props.navigation.navigate(PlayerScreen, {id});
   };
@@ -58,40 +66,30 @@ class Author extends React.Component {
     });
   };
   onHeartPress = () => {
-    this.setState({
-      isFavorite: !this.state.isFavorite
-    }, () => {
-      this.props.setFavoriteAuthor({
-        id: this.authorId,
-        status: this.state.isFavorite
-      });
+    this.props.setFavoriteAuthor({
+      id: this.authorId,
+      status: !this.isFavorite
     });
   };
   render() {
-    const {
-      activeContent,
-      isBiographyOpen,
-      isHeartActive
-    } = this.state;
     if (!this.author) {
       return null;
     }
     const {
+      isBiographyOpen,
+    } = this.state;
+    const {
       name,
-      lifeDates,
       bio,
       _id,
       verses,
-      // isFavorite
     } = this.author;
-    const {
-      isFavorite
-    } = this.state;
+
     const getActiveColor = isActive => isActive ?  "#333333" : "#f2f2f2b3";
     let heartIconName;
     let heartColor;
     let heartSize;
-    if (isFavorite) {
+    if (this.isFavorite) {
       heartIconName = "ios-heart";
       heartColor = "#ff425b";
       heartSize = 50;
@@ -165,7 +163,8 @@ class Author extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  authors: state.authors
+  authors: state.authors,
+  auth: state.auth
 });
 
 const mapDispatchToProps = dispatch => ({

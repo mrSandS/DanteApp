@@ -1,7 +1,10 @@
 [
   {
-    "name": "Бродский",
+    "lastName": "Бродский",
+    "firstName": "Иосиф",
+    "middleName": "Александрович",
     "folderName": "brodsky",
+    "rating": 6,
     "verses": [
       {
         "title": "Август",
@@ -18,8 +21,11 @@
     ]
   },
   {
-    "name": "Маяковский",
+    "lastName": "Маяковский",
+    "firstName": "Владимир",
+    "middleName": "Владимирович",
     "folderName": "mayakovsky",
+    "rating": 7,
     "verses": [
       {
         "title": "А все-таки",
@@ -36,8 +42,11 @@
     ]
   },
   {
-    "name": "Пушкин",
+    "lastName": "Пушкин",
+    "firstName": "Александр",
+    "middleName": "Сергеевич",
     "folderName": "pushkin",
+    "rating": 10,
     "verses": [
       {
         "title": "Весна, весна, пора любви ...",
@@ -54,8 +63,11 @@
     ]
   },
   {
-    "name": "Высоцкий",
+    "lastName": "Высоцкий",
+    "firstName": "Владимир",
+    "middleName": "Семенович",
     "folderName": "visocky",
+    "rating": 4,
     "verses": [
       {
         "title": "А люди всё роптали и роптали...",
@@ -72,11 +84,13 @@
     ]
   },
   {
-    "name": "Блок Александр Александрович",
+    "lastName": "Блок",
+    "firstName": "Александр",
+    "middleName": "Александрович",
     "folderName": "blok",
     "bio": "(16 (28) ноября 1880, Санкт-Петербург, Российская империя — 7 августа 1921, Петроград, РСФСР) — русский поэт, писатель, публицист, драматург, переводчик, литературный критик. Классик русской литературы XX столетия, один из крупнейших представителей русского символизма.",
     "lifeDates": "1880 - 1921",
-    "isFavorite": false,
+    "rating": 3,
     "verses": [
       {
         "title": "Ангел-хранитель",
@@ -93,8 +107,11 @@
     ]
   },
   {
-    "name": "Пастернак",
+    "lastName": "Пастернак",
+    "firstName": "Борис",
+    "middleName": "Леонидович",
     "folderName": "pasternak",
+    "rating": 2,
     "verses": [
       {
         "title": "Август",
@@ -111,8 +128,11 @@
     ]
   },
   {
-    "name": "Гумилев",
+    "lastName": "Гумилев",
+    "firstName": "Николай",
+    "middleName": "Степанович",
     "folderName": "gumilyov",
+    "rating": 2,
     "verses": [
       {
         "title": "Я больше ее не люблю...",
@@ -129,8 +149,11 @@
     ]
   },
   {
-    "name": "Мандельштам",
+    "lastName": "Мандельштам",
+    "firstName": "Осип",
+    "middleName": "Эмильевич",
     "folderName": "mandelshtam",
+    "rating": 2,
     "verses": [
       {
         "title": "Бесшумное веретено...",
@@ -147,8 +170,11 @@
     ]
   },
   {
-    "name": "Тургенев",
+    "lastName": "Тургенев",
+    "firstName": "Иван",
+    "middleName": "Сергеевич",
     "folderName": "turgenev",
+    "rating": 2,
     "verses": [
       {
         "title": "Брожу над озером",
@@ -165,8 +191,11 @@
     ]
   },
   {
-    "name": "Есенин",
+    "lastName": "Есенин",
+    "firstName": "Сергей",
+    "middleName": "Александрович",
     "folderName": "esenin",
+    "rating": 5,
     "verses": [
       {
         "title": "Алый мрак в небесной черни...",

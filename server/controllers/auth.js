@@ -82,7 +82,9 @@ exports.sendProfile = function(req, res, next) {
   req.models.User.findOne({
     _id: req.user._id
   })
-    .then(function (user) {
+    .populate("favoriteAuthors")
+    .exec(function (error, user) {
+      console.log("Users favs: ", user);
       var updatedUser = _.omit(user.toObject(), 'password');
       updatedUser.token = req.headers['authorization'];
       res.send({
@@ -102,8 +104,10 @@ exports.setFavoriteAuthor = function(req, res, next) {
   req.models.User.findOneAndUpdate(
     {_id: req.user._id},
     {[userUpdateQueryCommand]: {favoriteAuthors: req.params.id}},
-    {new: true},
-    function(error, userRes) {
+    {new: true}
+  )
+    .populate("favoriteAuthors")
+    .exec(function(error, userRes) {
       if (error) return res.send(error);
       req.models.Author.findOneAndUpdate(
         {_id: req.params.id},
@@ -123,8 +127,7 @@ exports.setFavoriteAuthor = function(req, res, next) {
           });
         }
       )
-    }
-  )
+    })
 };
 
 var createToken = function(user) {

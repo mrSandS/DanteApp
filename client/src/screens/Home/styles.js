@@ -19,7 +19,10 @@ export default StyleSheet.create({
     // flexDirection: "row",
     // justifyContent: "space-between",
     // alignItems: "center"
-    paddingVertical: 20
+    // borderBottomWidth: 0.5,
+    // borderBottomColor: "#adadad",
+    marginTop: 40
+
   },
 	listItem: {
     width: "50%",
@@ -32,6 +35,16 @@ export default StyleSheet.create({
     borderRadius: 100
   },
   name: {
-	  marginTop: 5
+	  marginTop: 5,
+    textAlign: "center"
+  },
+  headerWrapper: {
+    paddingTop: 30,
+    paddingBottom: 30,
+    borderBottomWidth: 0.5,
+    borderBottomColor: "#adadad",
+  },
+  iconWrapper: {
+
   }
 })

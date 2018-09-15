@@ -27,6 +27,11 @@ export default StyleSheet.create({
 	  justifyContent: 'center', 
 	  alignItems: 'center'
 	},
+  columnCenter: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
 	/*
 	* Navigation
 	*/

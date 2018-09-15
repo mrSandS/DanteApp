@@ -12,7 +12,7 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	favoriteAuthors: [{type: Schema.Types.ObjectId, ref: "Author" }]
+	favoriteAuthors: [{type: Schema.Types.ObjectId, ref: "Author", unique: true }]
 });
 
 module.exports = mongoose.model('User', userSchema);

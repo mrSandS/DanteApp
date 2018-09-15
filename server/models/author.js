@@ -6,9 +6,15 @@ var verseSchema = new mongoose.Schema({
 })
 
 var authorSchema = new mongoose.Schema({
-	name: {
+	lastName: {
 		type: String
 	},
+  firstName: {
+	  type: String
+  },
+  middleName: {
+	  type: String
+  },
 	folderName: {
 		type: String
 	},
