@@ -5,6 +5,8 @@
     "middleName": "Александрович",
     "folderName": "brodsky",
     "rating": 6,
+    "birthDate": 1940,
+    "deathDate": 1996,
     "verses": [
       {
         "title": "Август",
@@ -26,6 +28,8 @@
     "middleName": "Владимирович",
     "folderName": "mayakovsky",
     "rating": 7,
+    "birthDate": 1893,
+    "deathDate": 1930,
     "verses": [
       {
         "title": "А все-таки",
@@ -47,6 +51,8 @@
     "middleName": "Сергеевич",
     "folderName": "pushkin",
     "rating": 10,
+    "birthDate": 1799,
+    "deathDate": 1837,
     "verses": [
       {
         "title": "Весна, весна, пора любви ...",
@@ -68,6 +74,8 @@
     "middleName": "Семенович",
     "folderName": "visocky",
     "rating": 4,
+    "birthDate": 1938,
+    "deathDate": 1980,
     "verses": [
       {
         "title": "А люди всё роптали и роптали...",
@@ -91,6 +99,8 @@
     "bio": "(16 (28) ноября 1880, Санкт-Петербург, Российская империя — 7 августа 1921, Петроград, РСФСР) — русский поэт, писатель, публицист, драматург, переводчик, литературный критик. Классик русской литературы XX столетия, один из крупнейших представителей русского символизма.",
     "lifeDates": "1880 - 1921",
     "rating": 3,
+    "birthDate": 1880,
+    "deathDate": 1921,
     "verses": [
       {
         "title": "Ангел-хранитель",
@@ -112,6 +122,8 @@
     "middleName": "Леонидович",
     "folderName": "pasternak",
     "rating": 2,
+    "birthDate": 1890,
+    "deathDate": 1960,
     "verses": [
       {
         "title": "Август",
@@ -133,6 +145,8 @@
     "middleName": "Степанович",
     "folderName": "gumilyov",
     "rating": 2,
+    "birthDate": 1886,
+    "deathDate": 1921,
     "verses": [
       {
         "title": "Я больше ее не люблю...",
@@ -153,6 +167,8 @@
     "firstName": "Осип",
     "middleName": "Эмильевич",
     "folderName": "mandelshtam",
+    "birthDate": 1891,
+    "deathDate": 1938,
     "rating": 2,
     "verses": [
       {
@@ -175,6 +191,8 @@
     "middleName": "Сергеевич",
     "folderName": "turgenev",
     "rating": 2,
+    "birthDate": 1818,
+    "deathDate": 1883,
     "verses": [
       {
         "title": "Брожу над озером",
@@ -196,6 +214,8 @@
     "middleName": "Александрович",
     "folderName": "esenin",
     "rating": 5,
+    "birthDate": 1895,
+    "deathDate": 1925,
     "verses": [
       {
         "title": "Алый мрак в небесной черни...",

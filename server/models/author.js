@@ -1,9 +1,17 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+// var verseSchema = require('./');
 
-var verseSchema = new mongoose.Schema({
-	title: String,
-	text: String,
-})
+// var verseSchema = new mongoose.Schema({
+//   title: {
+//     type: String
+//   },
+//   text: {
+//     type: String
+//   },
+// });
+//
+// var VerseModel = mongoose.model('Verse', verseSchema);
 
 var authorSchema = new mongoose.Schema({
 	lastName: {
@@ -28,7 +36,13 @@ var authorSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-	verses: [verseSchema]
+  birthDate: {
+	  type: Number
+  },
+  deathDate: {
+    type: Number
+  },
+	verses: [{type: Schema.Types.ObjectId, ref: "Verse", unique: true}]
 });
 
 module.exports = mongoose.model('Author', authorSchema);

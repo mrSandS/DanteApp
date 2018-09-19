@@ -37,7 +37,7 @@ export default StyleSheet.create({
     fontSize: 12,
     color: "#fff",
   },
-  heart: {
+  favIcon: {
     position: "absolute",
     top: 10,
     left: 20,
@@ -52,7 +52,7 @@ export default StyleSheet.create({
     fontSize: 24,
     color: "#ccc"
   },
-  separatorField: {
+  separatorWrapper: {
 	  marginVertical: 20
   },
   content: {
@@ -76,7 +76,6 @@ export default StyleSheet.create({
   },
   button: {
 	  width: "45%",
-
     paddingVertical: 5,
     paddingHorizontal: 6,
     borderWidth: 0.5,

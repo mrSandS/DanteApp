@@ -18,7 +18,8 @@ import {
 import {
   setFavoriteAuthor
 } from '@redux/reducers/auth';
-import Icon from 'react-native-ionicons';
+// import Icon from 'react-native-ionicons';
+import { Icon } from 'react-native-elements';
 import Utils from '@services/utils';
 import { connect } from 'react-redux';
 import {
@@ -27,6 +28,12 @@ import {
 } from '@styles';
 import styles from './styles';
 import ApiService from '@services/api';
+
+//TODO:
+// 1. To make sure that an author name is not out of its field (on the next line)
+// when it's too long.
+// 2. If an author doesn't have a bio, no up arrow should be to open
+// the bio field
 
 class Author extends React.Component {
   constructor(props) {
@@ -65,7 +72,7 @@ class Author extends React.Component {
       isBiographyOpen: !this.state.isBiographyOpen
     });
   };
-  onHeartPress = () => {
+  onFavPress = () => {
     this.props.setFavoriteAuthor({
       id: this.authorId,
       status: !this.isFavorite
@@ -79,25 +86,28 @@ class Author extends React.Component {
       isBiographyOpen,
     } = this.state;
     const {
-      name,
+      firstName,
+      middleName,
+      lastName,
       bio,
       _id,
       verses,
     } = this.author;
 
     const getActiveColor = isActive => isActive ?  "#333333" : "#f2f2f2b3";
-    let heartIconName;
-    let heartColor;
-    let heartSize;
+    let favIconName;
+    let favIconColor;
+    let favIconSize;
     if (this.isFavorite) {
-      heartIconName = "ios-heart";
-      heartColor = "#ff425b";
-      heartSize = 50;
+      favIconName = "ios-heart";
+      // favoriteIconColor = "#ff425b";
+      favIconColor = "#f5e23a";
+      favIconSize = 50;
     }
      else {
-      heartIconName = "ios-heart-outline";
-      heartColor = "#adadad";
-      heartSize = 40;
+      favIconName = "ios-heart-outline";
+      favIconColor = "#adadad";
+      favIconSize = 40;
     }
     return <View style={styles.container}>
       <ImageBackground
@@ -109,14 +119,14 @@ class Author extends React.Component {
       >
 
         <TouchableOpacity
-          onPress={this.onHeartPress}
-          style={styles.heart}
+          onPress={this.onFavPress}
+          style={styles.favIcon}
         >
           <Icon
-            size={heartSize}
-            color={heartColor}
+            size={favIconSize}
+            color={favIconColor}
             //name="ios-more-outline"
-            name="ios-heart"
+            name="star"
           />
         </TouchableOpacity>
         <View style={[styles.authorNameContainer]}>
@@ -124,9 +134,9 @@ class Author extends React.Component {
               <Icon
                 size={20}
                 color="white"
-                name={`ios-arrow-${isBiographyOpen ? "down" : "up"}-outline`}
+                name={`keyboard-arrow-${isBiographyOpen ? "down" : "up"}`}
               />
-            <Text style={styles.authorName}>{name}</Text>
+            <Text style={styles.authorName}>{`${lastName} ${firstName} ${middleName}`}</Text>
           </TouchableOpacity>
           {
             isBiographyOpen
@@ -135,12 +145,11 @@ class Author extends React.Component {
           }
         </View>
       </ImageBackground>
-      <View style={AppStyles.rowCenter}>
+      <View style={[AppStyles.rowCenter, styles.separatorWrapper]}>
         <Icon
           size={30}
           color="#333"
-          name="ios-more-outline"
-          style={styles.separatorField}
+          name="more-horiz"
         />
       </View>
       <ScrollView style={styles.content} contentContainerStyle={styles.contentContainer}>

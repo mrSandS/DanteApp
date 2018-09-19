@@ -2,11 +2,13 @@ var fs = require('fs');
 var path = require('path');
 
 exports.list = function(req, res, next) {
-	req.models.Author.find({}, null, {}, function(error, authors) {
-		if (error) return res.send(error);
-		// console.log('List Authors: ', authors);
-		res.send(JSON.stringify(authors));
-	})	
+	req.models.Author.find({}, null, {})
+    .populate("verses")
+    .exec(function(error, authors) {
+      if (error) return res.send(error);
+      // console.log('List Authors: ', authors);
+      res.send(JSON.stringify(authors));
+    });
 };
 exports.sendAvatar = function(req, res, next) {
 	// console.log(req.params);

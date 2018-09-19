@@ -82,7 +82,7 @@ exports.sendProfile = function(req, res, next) {
   req.models.User.findOne({
     _id: req.user._id
   })
-    .populate("favoriteAuthors")
+    .populate({path: "favoriteAuthors", populate: {path: "verses"}})
     .exec(function (error, user) {
       console.log("Users favs: ", user);
       var updatedUser = _.omit(user.toObject(), 'password');
@@ -106,7 +106,7 @@ exports.setFavoriteAuthor = function(req, res, next) {
     {[userUpdateQueryCommand]: {favoriteAuthors: req.params.id}},
     {new: true}
   )
-    .populate("favoriteAuthors")
+    .populate({path: "favoriteAuthors", populate: {path: "verses"}})
     .exec(function(error, userRes) {
       if (error) return res.send(error);
       req.models.Author.findOneAndUpdate(

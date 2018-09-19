@@ -43,9 +43,9 @@ class Home extends React.Component {
     return {
       headerRight: <Button
         onPress={()=>navigation.navigate(SettingsScreen)}
-        iconName='ios-settings-outline'
+        iconName='settings'
         iconColor='#adadad'
-        iconSize={40}
+        iconSize={30}
       />,
       headerLeft: null
     }
@@ -53,7 +53,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIcon: alphaIcon
+      activeIcon: null
     }
   }
   componentWillMount () {
@@ -74,6 +74,12 @@ class Home extends React.Component {
 
     return <View style={[AppStyles.rowSpaceAround, styles.headerWrapper]}>
       <WrappedIcon
+        name={favoriteIcon}
+        isActive={activeIcon === favoriteIcon}
+        onPress={this.onFilterIconPress}
+        text="Коллекция"
+      />
+      <WrappedIcon
         name={alphaIcon}
         isActive={activeIcon === alphaIcon}
         onPress={this.onFilterIconPress}
@@ -84,12 +90,6 @@ class Home extends React.Component {
         isActive={activeIcon === ratingIcon}
         onPress={this.onFilterIconPress}
         text="По рейтингу"
-      />
-      <WrappedIcon
-        name={favoriteIcon}
-        isActive={activeIcon === favoriteIcon}
-        onPress={this.onFilterIconPress}
-        text="Коллекция"
       />
       <WrappedIcon
         name={dateIcon}
@@ -141,13 +141,14 @@ class Home extends React.Component {
         });
         break;
       case ratingIcon:
-        sortedData = sortedData = authors.data.sort((a,b) => b.rating - a.rating);
+        sortedData = authors.data.sort((a,b) => b.rating - a.rating);
         break;
       case favoriteIcon:
         sortedData = auth.data.favoriteAuthors;
         break;
-      default:
-        return sortedData;
+      case dateIcon:
+        sortedData = authors.data.sort((a,b) => b.birthDate - a.birthDate);
+        break;
     }
     return <FlatList
       extraData={this.state}

@@ -10,6 +10,7 @@ import {
   Animated,
   Easing
 } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import {
   setAuthors,
@@ -32,36 +33,45 @@ class Player extends React.Component {
     };
   }
   componentWillMount () {
-    const verseId = this.props.navigation.getParam("id");
+    this.setData(this.props);
+  };
+  componentWillUpdate(nextProps) {
+    this.setData(nextProps);
+  };
+  setData = props => {
+    const verseId = props.navigation.getParam("id");
     let verse;
     let isAdded;
-    this.props.authors.data
-      .forEach(
-        el => {
-          if (isAdded) {
-            return
-          }
-          el.verses
-            .forEach(
-              el => {
-                if (isAdded) {
-                  return
-                }
-                if (el._id === verseId) {
-                  verse = el;
-                  isAdded = true;
-                }
-              }
-            )
+    props.authors.data
+      .forEach(el => {
+        if (isAdded) {
+          return
         }
-      );
-
-    this.setState({
-      verse
-    });
+        el.verses
+          .forEach(el => {
+            if (isAdded) {
+              return
+            }
+            if (el._id === verseId) {
+              verse = el;
+              isAdded = true;
+            }
+          })
+      });
+    this.verse = verse;
   };
   render() {
-    return <Text>{this.state.verse.text}</Text>
+    if (!this.verse) {
+      return null
+    }
+    return <View>
+      <Text>{this.verse.text}</Text>
+      <Icon
+        size={30}
+        color="red"
+        name="favorite"
+      />
+    </View>
   }
 }
 

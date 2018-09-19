@@ -1,4 +1,4 @@
-export const hostname = 'http://192.168.0.31:3000';
+export const hostname = 'http://192.168.0.30:3000';
 
 const getApiPath = path => {
   return `${hostname}/api/${path}`
