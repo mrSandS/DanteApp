@@ -8,9 +8,13 @@ import {
   SET_AUTH_DATA,
   REMOVE_AUTH_DATA,
   SET_FAVORITE_AUTHORS,
-  SET_AUTHOR_RATING
+  SET_AUTHOR_RATING,
+  SET_VERSE_EMOTIONS,
+  SET_VERSE_EMOTIONS_RATING,
 } from '@consts/actions';
-
+import {
+  heart
+} from '@consts/emotions';
 const initialState = {
   data: {}
 };
@@ -34,6 +38,14 @@ const authReducer = (state = initialState, action) => {
         data: {
           ...state.data,
           favoriteAuthors: action.payload
+        }
+      };
+    case SET_VERSE_EMOTIONS:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          versesEmotions: action.payload
         }
       };
     default:
@@ -74,50 +86,6 @@ export const loadSession = () => {
       })
   }
 };
-// export const register = profileData => {
-//   return dispatch => {
-//     const {
-//       emailValue,
-//       passwordValue
-//     } = profileData;
-//     const requestBody = {
-//       email: emailValue,
-//       password: passwordValue
-//     };
-//     return ApiService.register(requestBody)
-//       .then(res => {
-//         dispatch({
-//           type: SET_AUTH_DATA,
-//           payload: res.data
-//         });
-//         HttpService.setSessionToken(res.data.token);
-//         StorageService.setSessionToken(res.data.token);
-//         return res.data
-//       })
-//   };
-// };
-//
-// export const login = profileData => {
-//   return dispatch => {
-//     const {
-//       emailValue,
-//       passwordValue
-//     } = profileData;
-//     const requestBody = {
-//       email: emailValue,
-//       password: passwordValue
-//     };
-//     return ApiService.login(requestBody)
-//       .then(res => {
-//         console.log('Login res: ', res);
-//         // dispatch({
-//         //   type: SET_AUTHORS,
-//         //   payload: res
-//         // });
-//         // return res
-//       })
-//   };
-// };
 
 export const authorize = ({profileData, actionName}) => {
   return dispatch => {
@@ -184,6 +152,27 @@ export const setFavoriteAuthor = payload => {
           payload: {
             id: author._id,
             rating: author.rating
+          }
+        });
+      })
+  }
+};
+
+export const setVerseEmotion = ({authorId, verseId, status, emotion}) => {
+  return dispatch => {
+    console.log("AuthorId: ", authorId);
+    return ApiService.setVerseEmotion({id: verseId, status, emotion})
+      .then(res => {
+        dispatch({
+          type: SET_VERSE_EMOTIONS,
+          payload: res.data.user.versesEmotions
+        });
+        dispatch({
+          type: SET_VERSE_EMOTIONS_RATING,
+          payload: {
+            authorId,
+            verseId,
+            emoRating: res.data.verse.emoRating
           }
         });
       })

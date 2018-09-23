@@ -32,6 +32,7 @@ app.post('/api/auth/register', controllers.auth.register);
 app.post('/api/auth/login', controllers.auth.login);
 app.get('/api/auth/profile', controllers.auth.sendProfile);
 app.put('/api/auth/setFavoriteAuthor/:id', controllers.auth.setFavoriteAuthor);
+app.put('/api/auth/setVerseEmotion/:id', controllers.auth.setVerseEmotion);
 
 var server = http.createServer(app);
 

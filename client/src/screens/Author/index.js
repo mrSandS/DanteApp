@@ -27,7 +27,7 @@ import {
   AppColors
 } from '@styles';
 import styles from './styles';
-import ApiService from '@services/api';
+import EmotionsView from '@components/EmotionsView';
 
 //TODO:
 // 1. To make sure that an author name is not out of its field (on the next line)
@@ -60,7 +60,7 @@ class Author extends React.Component {
     this.isFavorite = !!favoriteAuthors.find(fav => fav._id === this.authorId);
   };
   onVersePress = id => {
-    this.props.navigation.navigate(PlayerScreen, {id});
+    this.props.navigation.navigate(PlayerScreen, {verseId: id, authorId: this.authorId});
   };
   onChangeContentButtonPress = content => {
     this.setState({
@@ -158,10 +158,16 @@ class Author extends React.Component {
             verses.map(verse => {
               return <TouchableOpacity
                 key={verse._id}
-                style={styles.verseWrapper}
+                style={[AppStyles.rowSpaceBetween, styles.verseWrapper]}
                 onPress={() => this.onVersePress(verse._id)}
               >
-                <Text style={styles.verse} >{verse.title}</Text>
+                <Text style={styles.verse}>{verse.title.length > 30 ? `${verse.title.substring(0, 37)}...` : verse.title}</Text>
+                <EmotionsView
+                  verseId={verse._id}
+                  containerStyle={styles.emotionsViewContainer}
+                  activeIconSize={17}
+                  inactiveIconSize={14}
+                />
               </TouchableOpacity>
             })
           }

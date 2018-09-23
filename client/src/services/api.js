@@ -9,7 +9,8 @@ const {
     register,
     login,
     getProfile,
-    setFavoriteAuthor
+    setFavoriteAuthor,
+    setVerseEmotion
   }
 } = API;
 
@@ -20,6 +21,10 @@ export default {
   setFavoriteAuthor: ({id, status}) => {
     const body = {status};
     return HttpService.fetch(setFavoriteAuthor(id), body);
+  },
+  setVerseEmotion: ({id, status, emotion}) => {
+    const body = {status, emotion};
+    return HttpService.fetch(setVerseEmotion(id), body);
   },
   register: body => {
     return HttpService.fetch(register, body);

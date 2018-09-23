@@ -8,3 +8,7 @@
 
 - Continue setting testing functions: Register without password should have error property verification and other...
 as Register without email has.
+
+---------------------------------------------------19.09.18-------------------------------------------------------------
+
+- Continue setting server requests for liked verse ( reducers -> auth -> setLikedVerse )

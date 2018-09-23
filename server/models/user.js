@@ -12,7 +12,13 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	favoriteAuthors: [{type: Schema.Types.ObjectId, ref: "Author", unique: true }]
+	favoriteAuthors: [{type: Schema.Types.ObjectId, ref: "Author", unique: true }],
+	versesEmotions: {
+	  love: [{type: Schema.Types.ObjectId, ref: "Verse", unique: true }],
+    laugh: [{type: Schema.Types.ObjectId, ref: "Verse", unique: true }],
+    sadness: [{type: Schema.Types.ObjectId, ref: "Verse", unique: true }],
+    like: [{type: Schema.Types.ObjectId, ref: "Verse", unique: true }]
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

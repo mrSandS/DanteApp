@@ -10,17 +10,14 @@ import {
   Animated,
   Easing
 } from 'react-native';
-import { Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
-import {
-  setAuthors,
-  setCurrentValues
-} from '@redux/reducers/authors';
+import { Icon } from 'react-native-elements';
 import {
   AppStyles,
   AppColors
 } from '@styles';
 import styles from './styles';
+import EmotionsView from '@components/EmotionsView';
 
 class Player extends React.Component {
   static navigationOptions = {
@@ -39,7 +36,8 @@ class Player extends React.Component {
     this.setData(nextProps);
   };
   setData = props => {
-    const verseId = props.navigation.getParam("id");
+    this.verseId = props.navigation.getParam("verseId");
+    this.authorId = props.navigation.getParam("authorId");
     let verse;
     let isAdded;
     props.authors.data
@@ -52,7 +50,7 @@ class Player extends React.Component {
             if (isAdded) {
               return
             }
-            if (el._id === verseId) {
+            if (el._id === this.verseId) {
               verse = el;
               isAdded = true;
             }
@@ -64,23 +62,28 @@ class Player extends React.Component {
     if (!this.verse) {
       return null
     }
-    return <View>
-      <Text>{this.verse.text}</Text>
-      <Icon
-        size={30}
-        color="red"
-        name="favorite"
+    return <View style={[AppStyles.columnCenter, styles.container]}>
+      <ScrollView contentContainerStyle={styles.scrollViewContentContainer}>
+        <Text style={styles.verse}>{this.verse.text}</Text>
+      </ScrollView>
+      <EmotionsView
+        containerStyle={styles.emotionsPanel}
+        authorId={this.authorId}
+        verseId={this.verseId}
+        isIconsTouchable={true}
       />
     </View>
   }
 }
 
 const mapStateToProps = state => ({
-  authors: state.authors
+  authors: state.authors,
+  auth: state.auth
 });
 
 const mapDispatchToProps = dispatch => ({
-  setAuthors: () => dispatch(setAuthors())
+  setAuthors: () => dispatch(setAuthors()),
+  setVerseEmotion: payload => dispatch(setVerseEmotion(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

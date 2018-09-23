@@ -102,6 +102,10 @@ export default StyleSheet.create({
     borderBottomColor: "#adadad"
   },
   verse: {
+	  flex: 5,
     fontSize: 16,
+  },
+  emotionsViewContainer: {
+	  flex: 1
   }
 })
