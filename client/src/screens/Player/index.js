@@ -18,11 +18,14 @@ import {
 } from '@styles';
 import styles from './styles';
 import EmotionsView from '@components/EmotionsView';
+import NavBar from '@components/NavBar';
 
 class Player extends React.Component {
-  static navigationOptions = {
-
-  };
+  static navigationOptions = ({navigation}) => ({
+    header: <NavBar
+      navigation={navigation}
+    />
+  });
   constructor(props) {
     super(props);
     this.state = {

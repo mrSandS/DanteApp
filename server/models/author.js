@@ -43,6 +43,17 @@ var authorSchema = new mongoose.Schema({
     type: Number
   },
 	verses: [{type: Schema.Types.ObjectId, ref: "Verse", unique: true}]
+}, {
+  toObject: {
+    virtuals: true
+  },
+  toJSON: {
+    virtuals: true
+  }
+});
+
+authorSchema.virtual('fullName').get(function() {
+  return `${this.lastName} ${this.firstName} ${this.middleName}`;
 });
 
 module.exports = mongoose.model('Author', authorSchema);

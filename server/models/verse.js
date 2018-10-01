@@ -25,6 +25,18 @@ var verseSchema = new mongoose.Schema({
       default: 0
     }
   }
+},
+{
+  toObject: {
+    virtuals: true
+  },
+  toJSON: {
+    virtuals: true
+  }
+});
+
+verseSchema.virtual('emoRating.total').get(function() {
+  return this.emoRating.love + this.emoRating.laugh + this.emoRating.sadness + this.emoRating.like;
 });
 
 module.exports = mongoose.model('Verse', verseSchema);

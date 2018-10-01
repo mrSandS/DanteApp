@@ -64,7 +64,7 @@ const StackNavigatorConfig = {
       headerStyle: {
 		    backgroundColor: 'white',
         paddingHorizontal: 15
-		  }
+		  },
       // header: <NavBar navigation={navigation} />,
       // headerRight: <Icon
        //  name='ios-settings-outline'

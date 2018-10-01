@@ -12,8 +12,13 @@ export default StyleSheet.create({
 	  height: "100%",
     backgroundColor: "#f2f2f2"
 	},
+  navBarTitle: {
+    backgroundColor: "white",
+    paddingVertical: 10,
+    paddingHorizontal: 8
+  },
   scrollViewContentContainer: {
-	  marginTop: 60,
+	  marginTop: 120,
     marginBottom: 20,
     marginHorizontal: 15
   },

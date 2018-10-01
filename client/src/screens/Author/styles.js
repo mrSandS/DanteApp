@@ -107,5 +107,12 @@ export default StyleSheet.create({
   },
   emotionsViewContainer: {
 	  flex: 1
+  },
+  verseTotalRating: {
+	  backgroundColor: '#adadad',
+    paddingHorizontal: 5,
+    marginHorizontal: 3,
+    borderRadius: 10,
+    color: 'white'
   }
 })

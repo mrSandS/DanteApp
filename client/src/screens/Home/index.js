@@ -32,6 +32,7 @@ import styles from './styles';
 // TODO:
 // 1. Not all material-icons are seen in react-native-vector-icons (No outlined calendar).
 // 2. Set favorites Icon apart from other icons
+// 3. Change header right/left icons to material
 
 const alphaIcon = "sort-by-alpha";
 const ratingIcon = "insert-chart";
@@ -105,7 +106,6 @@ class Home extends React.Component {
       onPress={() => this.onListItemPress(item._id)}
     >
       <Image
-
         style={styles.image}
         source={{
           uri: Utils.getAvatar(item._id),

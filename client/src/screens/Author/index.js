@@ -162,6 +162,7 @@ class Author extends React.Component {
                 onPress={() => this.onVersePress(verse._id)}
               >
                 <Text style={styles.verse}>{verse.title.length > 30 ? `${verse.title.substring(0, 37)}...` : verse.title}</Text>
+                <Text style={styles.verseTotalRating}>{verse.emoRating.total}</Text>
                 <EmotionsView
                   verseId={verse._id}
                   containerStyle={styles.emotionsViewContainer}
@@ -187,29 +188,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Author);
-
-{/*<View style={[AppStyles.rowCenter, styles.buttonsContainer]}>*/}
-  {/*<Button*/}
-    {/*title="Стихи"*/}
-    {/*containerStyle={[styles.button, styles.leftButton, {backgroundColor: getActiveColor(activeContent === "verses")}]}*/}
-    {/*textStyle={[styles.buttonTextStyle, {color: getActiveColor(activeContent === "bio")}]}*/}
-    {/*onPress={() => this.onChangeContentButtonPress("verses")}*/}
-  {/*/>*/}
-  {/*<Button*/}
-    {/*title="Биография"*/}
-    {/*containerStyle={[styles.button, styles.rightButton, {backgroundColor: getActiveColor(activeContent === "bio")}]}*/}
-    {/*textStyle={[styles.buttonTextStyle, {color: getActiveColor(activeContent === "verses")}]}*/}
-    {/*onPress={() => this.onChangeContentButtonPress("bio")}*/}
-  {/*/>*/}
-{/*</View>*/}
-
-{/*<View style={[AppStyles.rowSpaceBetween, styles.headContainer]}>*/}
-  {/*<Text style={styles.name}>{name}</Text>*/}
-  {/*<Icon*/}
-    {/*name="ios-star-outline"*/}
-    {/*size={40}*/}
-    {/*color="#adadad"*/}
-  {/*/>*/}
-{/*</View>*/}
-
-// <Text style={styles.lifeDates}>{lifeDates}</Text>
