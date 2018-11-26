@@ -6,11 +6,14 @@ import {
   AppColors
 } from '@styles';
 
+export const ACCENT_COLOR = '#f5e23a';
+
 export default StyleSheet.create({
 	container: {
-    backgroundColor: "white"
+    backgroundColor: "white",
 	},
   contentContainer: {
+    paddingBottom: 20
     // justifyContent: "center",
     // alignItems: "center"
   },
@@ -38,6 +41,9 @@ export default StyleSheet.create({
 	  marginTop: 5,
     textAlign: "center"
   },
+  date: {
+    textAlign: "center"
+  },
   headerWrapper: {
     paddingTop: 30,
     paddingBottom: 30,
@@ -46,5 +52,5 @@ export default StyleSheet.create({
   },
   iconWrapper: {
 
-  }
+  },
 })

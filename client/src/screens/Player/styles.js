@@ -18,8 +18,8 @@ export default StyleSheet.create({
     paddingHorizontal: 8
   },
   scrollViewContentContainer: {
-	  marginTop: 120,
-    marginBottom: 20,
+    paddingTop: 20,
+    paddingBottom: 80,
     marginHorizontal: 15
   },
   verse: {
@@ -27,8 +27,8 @@ export default StyleSheet.create({
     lineHeight: 23
   },
 	emotionsPanel: {
-		position: "absolute",
-		bottom: 0,
+		// position: "absolute",
+		// bottom: 0,
 		width: "100%",
     backgroundColor: "white",
     paddingVertical: 10

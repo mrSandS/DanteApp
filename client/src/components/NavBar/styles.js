@@ -8,7 +8,7 @@ import {
 
 export default StyleSheet.create({
 	container: {
-    position: 'absolute',
+    // position: 'absolute',
     top: 0,
     width: '100%',
     // zIndex: 1,

@@ -114,5 +114,8 @@ export default StyleSheet.create({
     marginHorizontal: 3,
     borderRadius: 10,
     color: 'white'
-  }
+  },
+  wrappedIconStyle: {
+	  position: 'relative',
+  },
 })

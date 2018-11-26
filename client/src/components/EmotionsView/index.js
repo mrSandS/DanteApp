@@ -16,17 +16,13 @@ import {
   love,
   laugh,
   sadness,
-  like
+  like,
+  EMO_ICONS
 } from '@consts/emotions';
 import { AppColors, AppStyles } from '@styles';
 import { Icon } from 'react-native-elements';
 
-const EMO_ICONS = {
-  [love]: "favorite",
-  [laugh]: "mood",
-  [sadness]: "mood-bad",
-  [like]: "thumb-up"
-};
+
 
 class EmotionsView extends React.Component {
 
@@ -66,38 +62,37 @@ class EmotionsView extends React.Component {
   render() {
     const {
       containerStyle,
-      activeIconColor,
       inactiveIconColor,
       activeIconSize,
       inactiveIconSize,
       isIconsTouchable,
     } = this.props;
-    const getActiveColor = isActive => isActive ? activeIconColor : inactiveIconColor;
+    const getActiveColor = (isActive, activeColor) => isActive ? activeColor : inactiveIconColor;
     const getActiveSize = isActive => isActive ? activeIconSize : inactiveIconSize;
     return (
       <View style={[AppStyles.rowSpaceAround, containerStyle]}>
         <Icon
           size={getActiveSize(this.isLoved)}
-          color={getActiveColor(this.isLoved)}
-          name={EMO_ICONS[love]}
+          color={getActiveColor(this.isLoved, EMO_ICONS[love].color)}
+          name={EMO_ICONS[love].name}
           onPress={isIconsTouchable ? this.onEmotionIconPress(love, !this.isLoved) : null}
         />
         <Icon
           size={getActiveSize(this.isLaughed)}
-          color={getActiveColor(this.isLaughed)}
-          name={EMO_ICONS[laugh]}
+          color={getActiveColor(this.isLaughed, EMO_ICONS[laugh].color)}
+          name={EMO_ICONS[laugh].name}
           onPress={isIconsTouchable ? this.onEmotionIconPress(laugh, !this.isLaughed) : null}
         />
         <Icon
           size={getActiveSize(this.isSad)}
-          color={getActiveColor(this.isSad)}
-          name={EMO_ICONS[sadness]}
+          color={getActiveColor(this.isSad, EMO_ICONS[sadness].color)}
+          name={EMO_ICONS[sadness].name}
           onPress={isIconsTouchable ? this.onEmotionIconPress(sadness, !this.isSad) : null}
         />
         <Icon
           size={getActiveSize(this.isLiked)}
-          color={getActiveColor(this.isLiked)}
-          name={EMO_ICONS[like]}
+          color={getActiveColor(this.isLiked, EMO_ICONS[like].color)}
+          name={EMO_ICONS[like].name}
           onPress={isIconsTouchable ? this.onEmotionIconPress(like, !this.isLiked) : null}
         />
       </View>

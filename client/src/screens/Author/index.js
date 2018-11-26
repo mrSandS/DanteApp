@@ -10,6 +10,17 @@ import {
   TouchableHighlight
 } from 'react-native';
 import {
+  AppStyles,
+  AppColors
+} from '@styles';
+import {
+  love,
+  laugh,
+  sadness,
+  like,
+  EMO_ICONS
+} from '@consts/emotions';
+import {
   Button
 } from '@components';
 import {
@@ -22,12 +33,8 @@ import {
 import { Icon } from 'react-native-elements';
 import Utils from '@services/utils';
 import { connect } from 'react-redux';
-import {
-  AppStyles,
-  AppColors
-} from '@styles';
 import styles from './styles';
-import EmotionsView from '@components/EmotionsView';
+import VersesListItem from '@components/VersesListItem'
 
 //TODO:
 // 1. To make sure that an author name is not out of its field (on the next line)
@@ -40,7 +47,7 @@ class Author extends React.Component {
     super(props);
     this.state = {
       activeContent: "verses",
-      isBiographyOpen: false
+      isBiographyOpen: false,
     };
   }
   componentWillMount() {
@@ -93,7 +100,6 @@ class Author extends React.Component {
       _id,
       verses,
     } = this.author;
-
     const getActiveColor = isActive => isActive ?  "#333333" : "#f2f2f2b3";
     let favIconName;
     let favIconColor;
@@ -101,7 +107,7 @@ class Author extends React.Component {
     if (this.isFavorite) {
       favIconName = "ios-heart";
       // favoriteIconColor = "#ff425b";
-      favIconColor = "#f5e23a";
+      favIconColor = AppColors.accent;
       favIconSize = 50;
     }
      else {
@@ -109,7 +115,12 @@ class Author extends React.Component {
       favIconColor = "#adadad";
       favIconSize = 40;
     }
+
+
     return <View style={styles.container}>
+
+      {/* TOP IMAGE */}
+
       <ImageBackground
         source={{
           uri: Utils.getAvatar(_id),
@@ -129,6 +140,9 @@ class Author extends React.Component {
             name="star"
           />
         </TouchableOpacity>
+
+        {/* NAME/BIOGRAPHY PANEL */}
+
         <View style={[styles.authorNameContainer]}>
           <TouchableOpacity onPress={this.onAuthorNamePress} style={AppStyles.rowCenter}>
               <Icon
@@ -144,7 +158,11 @@ class Author extends React.Component {
               : null
           }
         </View>
+
       </ImageBackground>
+
+      {/* INTERMEDIARY ICON */}
+
       <View style={[AppStyles.rowCenter, styles.separatorWrapper]}>
         <Icon
           size={30}
@@ -152,24 +170,14 @@ class Author extends React.Component {
           name="more-horiz"
         />
       </View>
+
+      {/* VERSES LIST */}
+
       <ScrollView style={styles.content} contentContainerStyle={styles.contentContainer}>
         <View style={styles.versesContainer}>
           {
             verses.map(verse => {
-              return <TouchableOpacity
-                key={verse._id}
-                style={[AppStyles.rowSpaceBetween, styles.verseWrapper]}
-                onPress={() => this.onVersePress(verse._id)}
-              >
-                <Text style={styles.verse}>{verse.title.length > 30 ? `${verse.title.substring(0, 37)}...` : verse.title}</Text>
-                <Text style={styles.verseTotalRating}>{verse.emoRating.total}</Text>
-                <EmotionsView
-                  verseId={verse._id}
-                  containerStyle={styles.emotionsViewContainer}
-                  activeIconSize={17}
-                  inactiveIconSize={14}
-                />
-              </TouchableOpacity>
+              return <VersesListItem key={verse._id} verse={verse} onVersePress={this.onVersePress} />
             })
           }
         </View>

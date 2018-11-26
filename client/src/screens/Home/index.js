@@ -37,7 +37,13 @@ import styles from './styles';
 const alphaIcon = "sort-by-alpha";
 const ratingIcon = "insert-chart";
 const favoriteIcon = "star-border";
+const favoriteIcon_full = 'star';
 const dateIcon = "date-range";
+
+const sortedByAlpha = 'alpha';
+const sortedByRating = 'rating';
+const sortedByDate = 'date';
+const sortedByFavorite = 'favorite';
 
 class Home extends React.Component {
   static navigationOptions = ({navigation}) => {
@@ -54,53 +60,76 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeIcon: null
+      sortedBy: sortedByAlpha
     }
   }
   componentWillMount () {
     this.props.setAuthors();
   }
   onFilterIconPress = activeIcon => () => {
-    this.setState({
-      activeIcon
-    }, ()=>console.log(this.state.activeIcon));
+    let sortedBy;
+    switch (activeIcon) {
+      case alphaIcon:
+        sortedBy = sortedByAlpha;
+        break;
+      case ratingIcon:
+        sortedBy = sortedByRating;
+        break;
+      case favoriteIcon:
+        sortedBy = sortedByFavorite;
+        break;
+      case dateIcon:
+        sortedBy = sortedByDate;
+        break;
+    }
+    this.setState({sortedBy});
   };
   onListItemPress = id => {
     this.props.navigation.navigate(AuthorScreen, {id});
   };
   renderHeader = () => {
     const {
-      activeIcon
+      sortedBy
     } = this.state;
 
     return <View style={[AppStyles.rowSpaceAround, styles.headerWrapper]}>
       <WrappedIcon
-        name={favoriteIcon}
-        isActive={activeIcon === favoriteIcon}
+        name={sortedBy === sortedByFavorite ? favoriteIcon_full : favoriteIcon}
+        isActive={sortedBy === sortedByFavorite}
         onPress={this.onFilterIconPress}
         text="Коллекция"
+        color={sortedBy === sortedByFavorite ? AppColors.accent : '#adadad'}
       />
       <WrappedIcon
         name={alphaIcon}
-        isActive={activeIcon === alphaIcon}
+        isActive={sortedBy === sortedByAlpha}
         onPress={this.onFilterIconPress}
         text="По алфавиту"
       />
       <WrappedIcon
         name={ratingIcon}
-        isActive={activeIcon === ratingIcon}
+        isActive={sortedBy === sortedByRating}
         onPress={this.onFilterIconPress}
         text="По рейтингу"
       />
       <WrappedIcon
         name={dateIcon}
-        isActive={activeIcon === dateIcon}
+        isActive={sortedBy === sortedByDate}
         onPress={this.onFilterIconPress}
         text="По дате рождения"
       />
     </View>
   };
   renderItem = ({item}) => {
+    const {
+      data: {
+        favoriteAuthors
+      }
+    } = this.props.auth;
+    const {
+      sortedBy,
+    } = this.state;
+    const isFavorite = !!favoriteAuthors.find(fav => fav._id === item._id);
     return <TouchableOpacity
       style={[styles.listItem]}
       onPress={() => this.onListItemPress(item._id)}
@@ -112,12 +141,31 @@ class Home extends React.Component {
           headers: {'Cache-Control': 'no-cache'}
         }}
       />
-      <Text style={styles.name}>{`${item.lastName} ${item.firstName[0]}.${item.middleName[0]}.`}</Text>
+      <Text style={styles.name}>{item.lastName} {item.firstName[0]}.{item.middleName[0]}.</Text>
+      {
+        sortedBy === sortedByDate
+          ? <Text style={styles.date}>{item.birthDate}-{item.deathDate}</Text>
+          : null
+      }
+      {
+        sortedBy === sortedByRating
+         ?  <WrappedIcon
+            isActive
+            name={isFavorite ? favoriteIcon_full : favoriteIcon}
+            text={item.rating}
+            textSize={13}
+            // textColor='white'
+            size={32}
+            color={isFavorite ? AppColors.accent : '#adadad'}
+            containerStyle={{flexDirection: 'row', justifyContent: 'flex-start', position: 'absolute', left: 123, top: 65}}
+          />
+          : null
+      }
     </TouchableOpacity>
   };
   render() {
     const {
-      activeIcon
+      sortedBy
     } = this.state;
     const {
       authors,
@@ -125,8 +173,8 @@ class Home extends React.Component {
     } = this.props;
 
     let sortedData = [...authors.data];
-    switch (activeIcon) {
-      case alphaIcon:
+    switch (sortedBy) {
+      case sortedByAlpha:
         sortedData = authors.data.sort((a,b) => {
           const nameA = a.lastName.toUpperCase();
           const nameB = b.lastName.toUpperCase();
@@ -140,13 +188,13 @@ class Home extends React.Component {
           return 0;
         });
         break;
-      case ratingIcon:
+      case sortedByRating:
         sortedData = authors.data.sort((a,b) => b.rating - a.rating);
         break;
-      case favoriteIcon:
+      case sortedByFavorite:
         sortedData = auth.data.favoriteAuthors;
         break;
-      case dateIcon:
+      case sortedByDate:
         sortedData = authors.data.sort((a,b) => b.birthDate - a.birthDate);
         break;
     }
@@ -167,13 +215,16 @@ class Home extends React.Component {
 const WrappedIcon = props => {
   const {
       name,
-      onPress,
+      onPress = ()=>{},
       isActive,
       text,
+      textSize,
+      textColor,
+      containerStyle,
       ...other
     } = props;
 
-  return <View style={AppStyles.columnCenter}>
+  return <View style={[styles.wrappedIconStyle, AppStyles.columnCenter, containerStyle]}>
     <Icon
       name={name}
       onPress={onPress(name)}
@@ -183,7 +234,7 @@ const WrappedIcon = props => {
     />
     {
       isActive
-        ? <Text>{text}</Text>
+        ? <Text style={{fontSize: textSize, color: textColor}}>{text}</Text>
         : null
     }
   </View>

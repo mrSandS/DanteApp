@@ -88,16 +88,22 @@ class NavBar extends Component {
       <View style={styles.container}>
         <View style={styles.innerContainer}>
           <View style={[AppStyles.rowLeft, styles.mainInfoWrapper]}>
+
+            {/* BACK ICON */}
+
             <Icon
               size={30}
               color='#adadad'
               name='arrow-back'
               onPress={() => goBack()}
             />
+
+            {/* AUTHOR'S INFO */}
+
             {
               currentAuthor
                 ? <TouchableOpacity onPress={this.onCurrentAuthorPress} style={[AppStyles.rowLeft, styles.title]}>
-                  <View>
+                  <View style={AppStyles.rowLeft}>
                     <Image
                       style={{width:30, height: 30, borderRadius: 100}}
                       source={{
@@ -111,16 +117,22 @@ class NavBar extends Component {
                 : null
             }
           </View>
+
+          {/* VERSE'S TITLE */}
+
           <TouchableOpacity underlayColor='#fafafa' onPress={this.onCurrentVersePress} style={styles.verseTitleWrapper}>
             <Text style={styles.verseTitle}>{currentVerse.title}</Text>
           </TouchableOpacity>
         </View>
-        <SlidingView
+
+        {/* DROPDOWN VIEW */}
+
+        {/*<SlidingView
           isOpen={isVersesSVOpen}
           isAnimated={false}
           data={currentAuthor.verses.map(el => ({id: el._id, value: el.title}) )}
           viewHeight={150}
-        />
+        />*/}
       </View>
     );
   }
