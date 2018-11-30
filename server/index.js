@@ -9,7 +9,9 @@ var Author = models.Author;
 var User = models.User;
 var middleware = require('./middleware');
 var controllers = require('./controllers');
-var db = mongoose.connect('mongodb://localhost/verses');
+var connectUri = 'mongodb://mr_SandS:8tQfJWFiTGtBzaQT@poetcluster-shard-00-00-kwyn7.gcp.mongodb.net:27017,poetcluster-shard-00-01-kwyn7.gcp.mongodb.net:27017,poetcluster-shard-00-02-kwyn7.gcp.mongodb.net:27017/verses?ssl=true&replicaSet=PoetCluster-shard-0&authSource=admin&retryWrites=true';
+// var db = mongoose.connect('mongodb://localhost/verses');
+var db = mongoose.connect(connectUri);
 var app = express();
 var insertData = require('./db/script').insertData;
 
