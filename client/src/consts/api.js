@@ -1,4 +1,5 @@
-export const hostname = 'http://192.168.0.32:3000';
+// export const hostname = 'http://192.168.0.32:3000';
+export const hostname = 'https://dante-224318.appspot.com';
 
 const getApiPath = path => {
   return `${hostname}/api/${path}`
