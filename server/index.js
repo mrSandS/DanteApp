@@ -14,7 +14,7 @@ var connectUri = 'mongodb://mr_SandS:8tQfJWFiTGtBzaQT@poetcluster-shard-00-00-kw
 var db = mongoose.connect(connectUri);
 var app = express();
 var insertData = require('./db/script').insertData;
-console.log("TEST")
+
 app.use(bodyParser.json());
 app.use(function(req, res, next) {
 	if (!models.Author) {

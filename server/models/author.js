@@ -42,7 +42,7 @@ var authorSchema = new mongoose.Schema({
   deathDate: {
     type: Number
   },
-	verses: [{type: Schema.Types.ObjectId, ref: "Verse", unique: true}]
+	verses: [{type: Schema.Types.ObjectId, ref: "Verse"}]
 }, {
   toObject: {
     virtuals: true

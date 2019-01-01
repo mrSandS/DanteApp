@@ -28,6 +28,13 @@ exports.register = function (req, res) {
     .then(function () {
 
       req.body.password = bcrypt.hashSync(req.body.password.trim(), 12);
+      req.body.favoriteAuthors = [];
+      req.body.versesEmotions = {
+          love: [],
+          laugh: [],
+          sadness: [],
+          like: [],
+      };
       return req.models.User.create(req.body);
     })
     .then(function (user) {

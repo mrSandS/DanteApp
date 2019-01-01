@@ -76,6 +76,7 @@ class AuthComponent extends React.Component {
         }
       })
       .catch(err => {
+        console.log('Catch: ', err)
         this.setState({
           errorsMessages: [],
           hasEmailFieldError: false,
@@ -119,7 +120,6 @@ class AuthComponent extends React.Component {
   };
 
   render() {
-    console.log("Errors: ", this.state.errorsMessages);
 
     const {
       hasPasswordFieldError,
@@ -135,10 +135,10 @@ class AuthComponent extends React.Component {
       ? "red"
       : "white";
 
-    emailFieldAdditionalStyle = {
+    const emailFieldAdditionalStyle = {
       borderBottomColor: emailFieldBorderBottomColor
     };
-    passwordFieldAdditionalStyle = {
+    const passwordFieldAdditionalStyle = {
       borderBottomColor: passwordFieldBorderBottomColor
     };
 

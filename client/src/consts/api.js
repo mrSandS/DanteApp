@@ -1,5 +1,11 @@
+// Real device
 // export const hostname = 'http://192.168.0.32:3000';
+// Remote Server
 export const hostname = 'https://dante-224318.appspot.com';
+// Android Studio emulator
+// export const hostname = 'http://10.0.2.2:3000';
+// Genymotion emulator
+// export const hostname = 'http://10.0.3.2:3000';
 
 const getApiPath = path => {
   return `${hostname}/api/${path}`
