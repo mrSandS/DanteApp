@@ -13,7 +13,7 @@ var connectUri = 'mongodb://mr_SandS:8tQfJWFiTGtBzaQT@poetcluster-shard-00-00-kw
 // var db = mongoose.connect('mongodb://localhost/verses');
 var db = mongoose.connect(connectUri);
 var app = express();
-var insertData = require('./db/script').insertData;
+// var insertData = require('./db/script').insertData;
 
 app.use(bodyParser.json());
 app.use(function(req, res, next) {

@@ -8,6 +8,7 @@ exports.insertData = function () {
     models.Verse.deleteMany({}, function (err) {
       data.forEach(function (author, authorInx) {
         const versesPromises = [];
+        author.bio = fs.readFileSync(path.resolve(__dirname, "./bio/" + author.bio), 'utf8');
         author.verses.forEach(function (verse, verseInx) {
           verse.text = fs.readFileSync(path.resolve(__dirname, "./verses/" + author.folderName + "/" + verse.text), 'utf8');
           var newVerse = new models.Verse(verse);

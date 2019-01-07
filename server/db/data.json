@@ -1,233 +1,26 @@
 [
   {
-    "lastName": "Бродский",
-    "firstName": "Иосиф",
-    "middleName": "Александрович",
-    "folderName": "brodsky",
-    "rating": 6,
-    "birthDate": 1940,
-    "deathDate": 1996,
+    "lastName": "Быков",
+    "firstName": "Дмитрий",
+    "middleName": "Львович",
+    "folderName": "bikov",
+    "bio": "bikov.txt",
+    "lifeDates": "1967",
+    "rating": 0,
+    "birthDate": "1967",
+    "deathDate": "",
     "verses": [
       {
-        "title": "Август",
-        "text": "avgust.txt"
+        "title": "Август - август, мой месяц - анапест!",
+        "text": "august-august.txt"
       },
       {
-        "title": "Первое сентября",
-        "text": "pervoe_sentyabrya.txt"
+        "title": "Басня",
+        "text": "basnya.txt"
       },
       {
-        "title": "Вполголоса - конечно, не во весь",
-        "text": "vpolgolosa.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Маяковский",
-    "firstName": "Владимир",
-    "middleName": "Владимирович",
-    "folderName": "mayakovsky",
-    "rating": 7,
-    "birthDate": 1893,
-    "deathDate": 1930,
-    "verses": [
-      {
-        "title": "А все-таки",
-        "text": "a_vse-taki.txt"
-      },
-      {
-        "title": "А вы могли-бы?",
-        "text": "a_vi_mogli-bi.txt"
-      },
-      {
-        "title": "Гимн взятке",
-        "text": "gimn-vzyatke.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Пушкин",
-    "firstName": "Александр",
-    "middleName": "Сергеевич",
-    "folderName": "pushkin",
-    "rating": 10,
-    "birthDate": 1799,
-    "deathDate": 1837,
-    "verses": [
-      {
-        "title": "Весна, весна, пора любви ...",
-        "text": "vesna.txt"
-      },
-      {
-        "title": "Буря",
-        "text": "burya.txt"
-      },
-      {
-        "title": "Во глубине сибирских руд...",
-        "text": "vo_glubine_sibirskih_rud.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Высоцкий",
-    "firstName": "Владимир",
-    "middleName": "Семенович",
-    "folderName": "visocky",
-    "rating": 4,
-    "birthDate": 1938,
-    "deathDate": 1980,
-    "verses": [
-      {
-        "title": "А люди всё роптали и роптали...",
-        "text": "a_ludi_vse_roptali.txt"
-      },
-      {
-        "title": "Бег иноходца",
-        "text": "beg_inohodca.txt"
-      },
-      {
-        "title": "Нет меня — я покинул Расею...",
-        "text": "net_menya_ya_pokinul_rosseyu.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Блок",
-    "firstName": "Александр",
-    "middleName": "Александрович",
-    "folderName": "blok",
-    "bio": "(16 (28) ноября 1880, Санкт-Петербург, Российская империя — 7 августа 1921, Петроград, РСФСР) — русский поэт, писатель, публицист, драматург, переводчик, литературный критик. Классик русской литературы XX столетия, один из крупнейших представителей русского символизма.",
-    "lifeDates": "1880 - 1921",
-    "rating": 3,
-    "birthDate": 1880,
-    "deathDate": 1921,
-    "verses": [
-      {
-        "title": "Ангел-хранитель",
-        "text": "angel_hranitel.txt"
-      },
-      {
-        "title": "Бушует снежная весна...",
-        "text": "bushuet_snezhnaya_vesna.txt"
-      },
-      {
-        "title": "Была ты всех ярче, верней и прелестней, Была ты всех ярче, верней и прелестней...",
-        "text": "bila_ti_vseh.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Пастернак",
-    "firstName": "Борис",
-    "middleName": "Леонидович",
-    "folderName": "pasternak",
-    "rating": 2,
-    "birthDate": 1890,
-    "deathDate": 1960,
-    "verses": [
-      {
-        "title": "Август",
-        "text": "avgust.txt"
-      },
-      {
-        "title": "Анне Ахматовой",
-        "text": "anne_ahmatovoy.txt"
-      },
-      {
-        "title": "В больнице",
-        "text": "v_bolnice.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Гумилев",
-    "firstName": "Николай",
-    "middleName": "Степанович",
-    "folderName": "gumilyov",
-    "rating": 2,
-    "birthDate": 1886,
-    "deathDate": 1921,
-    "verses": [
-      {
-        "title": "Я больше ее не люблю...",
-        "text": "ya_bolshe_ee_ne_lublu.txt"
-      },
-      {
-        "title": "Никогда не пел и не любил... ",
-        "text": "nikogda_ne_pel.txt"
-      },
-      {
-        "title": "Неизгладимы, нет, в моей судьбе...",
-        "text": "neizgladimi.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Мандельштам",
-    "firstName": "Осип",
-    "middleName": "Эмильевич",
-    "folderName": "mandelshtam",
-    "birthDate": 1891,
-    "deathDate": 1938,
-    "rating": 2,
-    "verses": [
-      {
-        "title": "Бесшумное веретено...",
-        "text": "besshumnoe_vereteno.txt"
-      },
-      {
-        "title": "В морозном воздухе...",
-        "text": "v_moroznom_vozduhe.txt"
-      },
-      {
-        "title": "В огромном омуте...",
-        "text": "v_ogromnom_omute.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Тургенев",
-    "firstName": "Иван",
-    "middleName": "Сергеевич",
-    "folderName": "turgenev",
-    "rating": 2,
-    "birthDate": 1818,
-    "deathDate": 1883,
-    "verses": [
-      {
-        "title": "Брожу над озером",
-        "text": "brozhu_nad_ozerom.txt"
-      },
-      {
-        "title": "Весенний вечер",
-        "text": "vesenniy_vecher.txt"
-      },
-      {
-        "title": "Гроза промчалась",
-        "text": "groza_promchalas.txt"
-      }
-    ]
-  },
-  {
-    "lastName": "Есенин",
-    "firstName": "Сергей",
-    "middleName": "Александрович",
-    "folderName": "esenin",
-    "rating": 5,
-    "birthDate": 1895,
-    "deathDate": 1925,
-    "verses": [
-      {
-        "title": "Алый мрак в небесной черни...",
-        "text": "aliy_mrak.txt"
-      },
-      {
-        "title": "Весна",
-        "text": "vesna.txt"
-      },
-      {
-        "title": "В этом мире я только прохожий...",
-        "text": "v_etom_mire.txt"
+        "title": "Вот девочка-зима из спального района...",
+        "text": "vot-devochka-zima.txt"
       }
     ]
   }
