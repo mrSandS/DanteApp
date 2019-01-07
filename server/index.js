@@ -38,7 +38,7 @@ app.put('/api/auth/setVerseEmotion/:id', controllers.auth.setVerseEmotion);
 
 var server = http.createServer(app);
 
-insertData();
+// insertData();
 
 server.listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));
